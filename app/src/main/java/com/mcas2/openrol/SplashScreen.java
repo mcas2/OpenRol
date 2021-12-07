@@ -9,6 +9,7 @@ import android.os.Looper;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -22,6 +23,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        openApp(true);
 
         ImageView fondo = findViewById(R.id.backgroundSplash);
         Glide.with(this)
@@ -30,9 +32,13 @@ public class SplashScreen extends AppCompatActivity {
                 .centerCrop()
                 .into(fondo);
 
-        ImageView boot = findViewById(R.id.backgroundSplash);
-        Animation myanim = AnimationUtils.loadAnimation(this, R.anim.sword_anim);
-        boot.startAnimation(myanim);
+        ImageView sword = findViewById(R.id.sword);
+        Animation swordAnim = AnimationUtils.loadAnimation(this, R.anim.sword_anim);
+        sword.startAnimation(swordAnim);
+
+        TextView text = findViewById(R.id.splash_text);
+        Animation textAnim = AnimationUtils.loadAnimation(this, R.anim.text_anim);
+        text.startAnimation(textAnim);
     }
 
 
