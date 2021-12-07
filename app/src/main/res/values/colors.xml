@@ -7,9 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="rojo_anaranjado">#ff603f</color>
     <color name="naranja_sanguineo">#F2784B</color>
     <color name="naranja_dulce">#F2884B</color>
     <color name="marron">#594022</color>
     <color name="estepa">#A68549</color>
     <color name="montaña">#2D2822</color>
+    <color name="gris_nube">#e2e9eb</color>
 </resources>

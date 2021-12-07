@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -13,6 +15,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 
 public class SplashScreen extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +30,11 @@ public class SplashScreen extends AppCompatActivity {
                 .centerCrop()
                 .into(fondo);
 
+        ImageView boot = findViewById(R.id.backgroundSplash);
+        Animation myanim = AnimationUtils.loadAnimation(this, R.anim.sword_anim);
+        boot.startAnimation(myanim);
     }
+
 
 
     public void openApp (boolean locationPermission){

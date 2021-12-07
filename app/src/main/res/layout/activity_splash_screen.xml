@@ -13,13 +13,38 @@
         />
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_knight"
+        app:layout_constraintStart_toEndOf="@id/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="-120dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/coloured_sword"
+        android:id="@+id/sword"
+        />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/knight_coloured"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="-20dp"
         />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:fontFamily="@font/sketch_gothic_school"
+        android:textSize="70sp"
+        android:textColor="@color/montaña"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        android:layout_marginTop="-80dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
