@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="2"
+        android:text="1"
         android:textAlignment="center"
         android:inputType="number"
         android:textSize="30sp"
@@ -24,6 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="2"
+        android:text="6"
         android:textAlignment="center"
         android:textSize="30sp"
         android:inputType="number"
@@ -46,25 +48,28 @@
 
     <Button
         android:id="@+id/rollDicesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:text="Tirar"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/d" />
 
     <TextView
         android:id="@+id/resultHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:hint="Historial de tiradas"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rollDicesButton" />
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
 
     <TextView
         android:id="@+id/result"
@@ -77,6 +82,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/eraseHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/estepa"
+        android:textColor="@color/montaña"
+        android:text="Borrar"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rollDicesButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

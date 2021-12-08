@@ -11,7 +11,9 @@
         android:theme="@style/Theme.OpenRol">
         <activity
             android:name=".Dices"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            />
         <activity
             android:name=".SplashScreen"
             android:exported="true"
@@ -24,7 +26,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
     </application>
 
 </manifest>
