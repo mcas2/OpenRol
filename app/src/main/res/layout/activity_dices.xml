@@ -11,28 +11,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="2"
+        android:inputType="number"
         android:text="1"
         android:textAlignment="center"
-        android:inputType="number"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/d"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/d" />
 
     <EditText
         android:id="@+id/numCaras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="2"
+        android:inputType="number"
         android:text="6"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/d"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/d" />
 
     <TextView
         android:id="@+id/d"
@@ -41,44 +39,45 @@
         android:text="D"
         android:textColor="@color/montaña"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/result" />
 
     <Button
         android:id="@+id/rollDicesButton"
         android:layout_width="200dp"
         android:layout_height="60dp"
+        android:layout_marginTop="80dp"
         android:text="Tirar"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
+        android:textSize="25sp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <TextView
         android:id="@+id/resultHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="60dp"
         android:hint="Historial de tiradas"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="60dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="70sp"
         android:textColor="@color/montaña"
-        app:layout_constraintBottom_toTopOf="@+id/d"
+        android:textSize="70sp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -88,12 +87,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/estepa"
-        android:textColor="@color/montaña"
         android:text="Borrar"
-        android:textSize="15sp"
+        android:textColor="@color/montaña"
+        android:textSize="20sp"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rollDicesButton" />
+
+    <Button
+        android:id="@+id/changeOperator"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:textSize="20sp"
+        android:text="+"
+        android:backgroundTint="@color/estepa"
+        app:layout_constraintEnd_toStartOf="@+id/mod"
+        app:layout_constraintTop_toBottomOf="@+id/d" />
+
+    <EditText
+        android:id="@+id/mod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="2"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:inputType="number"
+        android:text="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/d" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
