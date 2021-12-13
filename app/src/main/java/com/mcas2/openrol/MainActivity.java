@@ -18,4 +18,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Dices.class);
         startActivity(intent);
     }
+
+    public void openChar(View view) {
+        Intent intent = new Intent(MainActivity.this, Characters.class);
+        startActivity(intent);
+    }
 }

@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageFilterView"
+        android:id="@+id/diceImage"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/ic_dice20"
@@ -24,25 +24,50 @@
         app:layout_constraintGuide_percent="0.50" />
 
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.5" />
 
     <Button
         android:id="@+id/acces_dices_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dados"
         android:onClick="openDices"
-        android:textSize="15sp"
-        android:layout_marginTop="-50dp"
+        android:text="Dados"
         app:layout_constraintEnd_toStartOf="@+id/v1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageFilterView"
-        />
+        app:layout_constraintBottom_toBottomOf="@+id/h2" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/charImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ic_knight"
+        app:layout_constraintBottom_toTopOf="@+id/h1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/v1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/acces_char_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personajes"
+        android:onClick="openChar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/v1"
+        app:layout_constraintBottom_toBottomOf="@id/h2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.39"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
