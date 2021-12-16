@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Personajes"
-        android:onClick="openChar"
+        android:onClick="openSelectChar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/v1"
         app:layout_constraintBottom_toBottomOf="@id/h2" />

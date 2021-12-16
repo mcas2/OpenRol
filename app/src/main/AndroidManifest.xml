@@ -10,10 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenRol">
         <activity
-            android:name=".Characters"
+            android:name=".DnDCharacters"
             android:exported="false"
-            android:label="@string/title_activity_characters"
+            android:label="@string/title_activity_dn_dcharacters"
             android:theme="@style/Theme.OpenRol.NoActionBar" />
+        <activity
+            android:name=".SelectCharSystem"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Dices"
             android:exported="false"

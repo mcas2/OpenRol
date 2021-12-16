@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openChar(View view) {
-        Intent intent = new Intent(MainActivity.this, Characters.class);
+    public void openSelectChar(View view) {
+        Intent intent = new Intent(MainActivity.this, SelectCharSystem.class);
         startActivity(intent);
     }
 }

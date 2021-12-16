@@ -14,17 +14,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.mcas2.openrol.ui.main.SectionsPagerAdapter;
-import com.mcas2.openrol.databinding.ActivityCharactersBinding;
+import com.mcas2.openrol.databinding.ActivityDndCharactersBinding;
 
-public class Characters extends AppCompatActivity {
+public class DnDCharacters extends AppCompatActivity {
 
-    private ActivityCharactersBinding binding;
+    private ActivityDndCharactersBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityCharactersBinding.inflate(getLayoutInflater());
+        binding = ActivityDndCharactersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
