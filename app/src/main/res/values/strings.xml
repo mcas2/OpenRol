@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Open Rol</string>
     <string name="title_activity_characters">Characters</string>
-    <string name="tab_text_1">Stats</string>
+    <string name="tab_text_1">Básico</string>
     <string name="tab_text_2">Rasgos</string>
     <string name="tab_text_3">Equipo</string>
     <string name="tab_text_4">Magia</string>

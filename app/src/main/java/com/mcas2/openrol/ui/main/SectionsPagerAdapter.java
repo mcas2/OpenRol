@@ -8,6 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.mcas2.openrol.DnDCharFragment1;
+import com.mcas2.openrol.DnDCharFragment2;
+import com.mcas2.openrol.DnDCharFragment3;
+import com.mcas2.openrol.DnDCharFragment4;
+import com.mcas2.openrol.DnDCharFragment5;
 import com.mcas2.openrol.R;
 
 /**
@@ -34,9 +39,25 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        Fragment fragment = null;
+        switch (position){
+            case 0:
+                fragment = new DnDCharFragment1();
+                break;
+            case 1:
+                fragment = new DnDCharFragment2();
+                break;
+            case 2:
+                fragment = new DnDCharFragment3();
+                break;
+            case 3:
+                fragment = new DnDCharFragment4();
+                break;
+            case 4:
+                fragment = new DnDCharFragment5();
+                break;
+        }
+        return fragment;
     }
 
     @Nullable
