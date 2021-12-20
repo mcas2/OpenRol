@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:id="@+id/plaintTextName"
@@ -16,13 +17,12 @@
             android:layout_height="wrap_content"
             android:text="Nombre"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/charName"
+            app:layout_constraintEnd_toStartOf="@+id/nameEdit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/charName"
+            android:id="@+id/nameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -31,6 +31,50 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/plaintTextName"
             app:layout_constraintTop_toTopOf="@+id/plaintTextName" />
+
+        <TextView
+            android:id="@+id/plainTextClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clase"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/classSpinnerDnD"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plaintTextName" />
+
+        <Spinner
+            android:id="@+id/classSpinnerDnD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/plainTextClass"
+            android:entries="@array/dndClasses"
+            app:layout_constraintEnd_toStartOf="@+id/plainTextRace"
+            app:layout_constraintStart_toEndOf="@+id/plainTextClass"
+            app:layout_constraintTop_toTopOf="@+id/plainTextClass" />
+
+        <TextView
+            android:id="@+id/plainTextRace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raza"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/plainTextClass"
+            app:layout_constraintEnd_toStartOf="@+id/raceSpinnerDnD"
+            app:layout_constraintStart_toEndOf="@+id/classSpinnerDnD"
+            app:layout_constraintTop_toTopOf="@+id/plainTextClass" />
+
+        <Spinner
+            android:id="@+id/raceSpinnerDnD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:entries="@array/dndRaces"
+            app:layout_constraintBottom_toBottomOf="@+id/plainTextRace"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/plainTextRace"
+            app:layout_constraintTop_toTopOf="@+id/plainTextRace" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

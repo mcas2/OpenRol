@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dndRaces">
+        <item>Enano</item>
+        <item>Elfo</item>
+        <item>Mediano</item>
+        <item>Humano</item>
+        <item>Dracónido</item>
+        <item>Gnomo</item>
+        <item>Semielfo</item>
+        <item>Semiorco</item>
+        <item>Tiefling</item>
+    </string-array>
+
+    <string-array name="dndClasses">
+        <item>Bárbaro</item>
+        <item>Bardo</item>
+        <item>Brujo</item>
+        <item>Clérigo</item>
+        <item>Druida</item>
+        <item>Explorador</item>
+        <item>Guerrero</item>
+        <item>Hechicero</item>
+        <item>Mago</item>
+        <item>Monje</item>
+        <item>Paladín</item>
+        <item>Pícaro</item>
+    </string-array>
+</resources>
