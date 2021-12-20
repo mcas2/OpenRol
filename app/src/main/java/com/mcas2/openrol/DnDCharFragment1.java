@@ -23,13 +23,13 @@ public class DnDCharFragment1 extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_dnd_1, container, false);
 
         Spinner classSpinner = (Spinner) view.findViewById(R.id.classSpinnerDnD);
-        classAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> classAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.dndClasses, R.layout.support_simple_spinner_dropdown_item);
         classAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
         classSpinner.setAdapter(classAdapter);
 
         Spinner raceSpinner = (Spinner) view.findViewById(R.id.raceSpinnerDnD);
-        raceAdapter = new ArrayAdapter<String>(getActivity(), R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.dndRaces, R.layout.support_simple_spinner_dropdown_item);
         raceAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
         raceSpinner.setAdapter(raceAdapter);
