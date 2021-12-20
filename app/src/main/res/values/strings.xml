@@ -7,4 +7,6 @@
     <string name="tab_text_4">Magia</string>
     <string name="tab_text_5">Lore</string>
     <string name="title_activity_dn_dcharacters">DnDCharacters</string>
+
+    <string name="characterName"></string>
 </resources>
