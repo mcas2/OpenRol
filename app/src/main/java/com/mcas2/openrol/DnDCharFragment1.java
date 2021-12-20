@@ -12,8 +12,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class DnDCharFragment1 extends Fragment {
-    private String [] classes = {"A","B"};
-    private String [] races = {"Enano","Elfo", "Mediano", "Humano", "Dracónido", "Gnomo"};
     private ArrayAdapter classAdapter;
     private ArrayAdapter raceAdapter;
 
