@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.mcas2.openrol.DnDCharFragment1;
-import com.mcas2.openrol.DnDCharFragment2;
-import com.mcas2.openrol.DnDCharFragment3;
-import com.mcas2.openrol.DnDCharFragment4;
-import com.mcas2.openrol.DnDCharFragment5;
+import com.mcas2.openrol.DnDCharFragments.DnDCharFragment1;
+import com.mcas2.openrol.DnDCharFragments.DnDCharFragment2;
+import com.mcas2.openrol.DnDCharFragments.DnDCharFragment3;
+import com.mcas2.openrol.DnDCharFragments.DnDCharFragment4;
+import com.mcas2.openrol.DnDCharFragments.DnDCharFragment5;
 import com.mcas2.openrol.R;
 
 /**

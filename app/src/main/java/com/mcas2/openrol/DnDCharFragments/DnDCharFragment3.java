@@ -1,4 +1,4 @@
-package com.mcas2.openrol;
+package com.mcas2.openrol.DnDCharFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.mcas2.openrol.R;
 
 public class DnDCharFragment3 extends Fragment {
 
