@@ -8,6 +8,8 @@ public class SelectCharDnD extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_char_dnd;
+        setContentView(R.layout.activity_select_char_dnd);
+
+
     }
 }
