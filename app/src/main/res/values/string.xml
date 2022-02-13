@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="dndRaces">
-        <item>Enano</item>
-        <item>Elfo</item>
-        <item>Mediano</item>
+        <item>Enano de las colinas</item>
+        <item>Enano de las montañas</item>
+        <item>Alto Elfo</item>
+        <item>Elfo de los bosques</item>
+        <item>Elfo oscuro</item>
+        <item>Mediano (piesligeros)</item>
+        <item>Mediano (fornido)</item>
         <item>Humano</item>
         <item>Dracónido</item>
-        <item>Gnomo</item>
+        <item>Gnomo de los bosques</item>
+        <item>Gnomo de las rocas</item>
         <item>Semielfo</item>
         <item>Semiorco</item>
         <item>Tiefling</item>

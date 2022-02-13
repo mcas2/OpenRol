@@ -13,6 +13,9 @@
             android:name=".SelectCharSystem"
             android:exported="false" />
         <activity
+            android:name=".SelectCharDnD"
+            android:exported="false" />
+        <activity
             android:name=".DnDCharacters"
             android:exported="false"
             android:label="@string/title_activity_dn_dcharacters"
