@@ -12,20 +12,42 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Nombre"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@+id/nameEdit"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="20sp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/nameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
+            android:ems="9"
             android:text="@string/characterName"
             app:layout_constraintBottom_toBottomOf="@+id/plaintTextName"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/plaintTextName"
+            app:layout_constraintTop_toTopOf="@+id/plaintTextName" />
+
+        <TextView
+            android:id="@+id/plainTextLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nivel"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@id/dndCHeditLevel"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/dndCHeditLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="2"
+            android:textAlignment="center"
+            android:text="1"
+            android:inputType="number"
+            android:layout_marginRight="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/plaintTextName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/plaintTextName" />
 
         <TextView
@@ -73,17 +95,30 @@
             app:layout_constraintStart_toEndOf="@+id/plainTextRace"
             app:layout_constraintTop_toTopOf="@+id/plainTextRace" />
 
+        <!--HABILIDADES-->
+
+        <TextView
+            android:id="@+id/plainTextHabilidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Habilidades"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/raceSpinnerDnD" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewStregth"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewDexterity"
             app:layout_constraintEnd_toStartOf="@+id/cardViewDexterity"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/raceSpinnerDnD">
+            app:layout_constraintTop_toTopOf="@+id/cardViewDexterity">
 
                 <TextView
                     android:id="@+id/dndCSModStrength"
@@ -105,7 +140,7 @@
             app:layout_constraintEnd_toStartOf="@+id/cardViewConstitution"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/cardViewStregth"
-            app:layout_constraintTop_toBottomOf="@id/raceSpinnerDnD">
+            app:layout_constraintTop_toBottomOf="@id/plainTextHabilidades">
 
                 <TextView
                     android:id="@+id/dndCSModDexterity"
@@ -120,13 +155,13 @@
             android:id="@+id/cardViewConstitution"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewDexterity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/cardViewDexterity"
-            app:layout_constraintTop_toBottomOf="@id/raceSpinnerDnD">
+            app:layout_constraintTop_toTopOf="@+id/cardViewDexterity">
 
                 <TextView
                     android:id="@+id/dndCSModConstitution"
@@ -144,8 +179,7 @@
             android:text="Fuerza"
             app:layout_constraintEnd_toEndOf="@+id/cardViewStregth"
             app:layout_constraintStart_toStartOf="@+id/cardViewStregth"
-            app:layout_constraintTop_toBottomOf="@id/cardViewConstitution"
-            ></TextView>
+            app:layout_constraintTop_toBottomOf="@id/cardViewConstitution" />
 
         <TextView
             android:id="@+id/dndPlainTextDexterity"
@@ -154,7 +188,7 @@
             android:text="Destreza"
             app:layout_constraintEnd_toEndOf="@+id/cardViewDexterity"
             app:layout_constraintStart_toStartOf="@+id/cardViewDexterity"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewDexterity"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/cardViewDexterity" />
 
         <TextView
             android:id="@+id/dndPlainTextConstitution"
@@ -163,7 +197,7 @@
             android:text="Constitución"
             app:layout_constraintEnd_toEndOf="@+id/cardViewConstitution"
             app:layout_constraintStart_toStartOf="@+id/cardViewConstitution"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewConstitution"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/cardViewConstitution" />
 
         <EditText
             android:id="@+id/dndCHeditTextStrength"
@@ -172,10 +206,12 @@
             android:layout_marginTop="10dp"
             android:ems="2"
             android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/cardViewStregth"
             app:layout_constraintStart_toStartOf="@+id/cardViewStregth"
-            app:layout_constraintTop_toBottomOf="@id/cardViewConstitution" />
+            app:layout_constraintTop_toBottomOf="@id/cardViewStregth" />
 
         <EditText
             android:id="@+id/dndCHeditTextDexterity"
@@ -184,10 +220,12 @@
             android:layout_marginTop="10dp"
             android:ems="2"
             android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/cardViewDexterity"
             app:layout_constraintStart_toStartOf="@+id/cardViewDexterity"
-            app:layout_constraintTop_toBottomOf="@id/cardViewConstitution" />
+            app:layout_constraintTop_toBottomOf="@id/cardViewDexterity" />
 
         <EditText
             android:id="@+id/dndCHeditTextConstitution"
@@ -196,10 +234,386 @@
             android:layout_marginTop="10dp"
             android:ems="2"
             android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/cardViewConstitution"
             app:layout_constraintStart_toStartOf="@+id/cardViewConstitution"
             app:layout_constraintTop_toBottomOf="@id/cardViewConstitution" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewIntelligence"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewWisdom"
+            app:layout_constraintEnd_toStartOf="@+id/cardViewWisdom"
+            app:layout_constraintHorizontal_bias="0.5"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cardViewWisdom">
+
+                <TextView
+                    android:id="@+id/dndCSModIntelligence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0"
+                    android:textSize="20sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewWisdom"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardViewCharisma"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cardViewIntelligence"
+            app:layout_constraintTop_toBottomOf="@id/dndCHeditTextConstitution">
+
+                <TextView
+                    android:id="@+id/dndCSModWisdom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0"
+                    android:textSize="20sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCharisma"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/cardViewWisdom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cardViewWisdom"
+            app:layout_constraintTop_toTopOf="@+id/cardViewWisdom">
+
+                <TextView
+                    android:id="@+id/dndCSModCharisma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0"
+                    android:textSize="20sp" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/dndPlainTextIntelligence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inteligencia"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewIntelligence"
+            app:layout_constraintStart_toStartOf="@+id/cardViewIntelligence"
+            app:layout_constraintTop_toBottomOf="@id/cardViewCharisma" />
+
+        <TextView
+            android:id="@+id/dndPlainTextWisdom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sabiduría"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewWisdom"
+            app:layout_constraintStart_toStartOf="@+id/cardViewWisdom"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewCharisma" />
+
+        <TextView
+            android:id="@+id/dndPlainTextCharisma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Carisma"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewCharisma"
+            app:layout_constraintStart_toStartOf="@+id/cardViewCharisma"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewCharisma" />
+
+        <EditText
+            android:id="@+id/dndCHeditTextIntelligence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="2"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewIntelligence"
+            app:layout_constraintStart_toStartOf="@+id/cardViewIntelligence"
+            app:layout_constraintTop_toBottomOf="@id/cardViewCharisma" />
+
+        <EditText
+            android:id="@+id/dndCHeditTextWisdom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="2"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewWisdom"
+            app:layout_constraintStart_toStartOf="@+id/cardViewWisdom"
+            app:layout_constraintTop_toBottomOf="@id/cardViewCharisma" />
+
+        <EditText
+            android:id="@+id/dndCHeditTextCharisma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="2"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewCharisma"
+            app:layout_constraintStart_toStartOf="@+id/cardViewCharisma"
+            app:layout_constraintTop_toBottomOf="@id/cardViewCharisma" />
+
+        <!--FIN DE LAS HABILIDADES-->
+        <!--NÚMEROS IMPORTANTES-->
+
+        <TextView
+            android:id="@+id/plainTextTraits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Características"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dndCHeditTextWisdom" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewCompetencia"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/naranja_dulce"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardViewInitiative"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cardViewSpeed"
+            app:layout_constraintTop_toBottomOf="@id/plainTextTraits">
+                <EditText
+                    android:id="@+id/dndCHeditTextCompetencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:ems="2"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewArmorClass"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/naranja_dulce"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardViewSpeed"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/plainTextTraits">
+
+                <EditText
+                    android:id="@+id/dndCHeditTextArmorClass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:ems="2"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewInitiative"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/naranja_dulce"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="8dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cardViewCompetencia"
+            app:layout_constraintTop_toBottomOf="@id/plainTextTraits">
+                <EditText
+                    android:id="@+id/dndCHeditTextInitiative"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:ems="2"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewSpeed"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/naranja_dulce"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="8dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/cardViewCompetencia"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cardViewArmorClass"
+            app:layout_constraintTop_toBottomOf="@id/plainTextTraits">
+                <EditText
+                    android:id="@+id/dndCHeditTextSpeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:ems="2"
+                    android:background="@null"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/plainTextCompetencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B.Competencia"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewSpeed"
+            app:layout_constraintStart_toStartOf="@+id/cardViewSpeed"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewArmorClass" />
+
+        <TextView
+            android:id="@+id/plainTextArmorClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C.Armadura"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewArmorClass"
+            app:layout_constraintStart_toStartOf="@+id/cardViewArmorClass"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewSpeed" />
+
+        <TextView
+            android:id="@+id/plainTextInitiative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iniciativa"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewCompetencia"
+            app:layout_constraintStart_toStartOf="@+id/cardViewCompetencia"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewCompetencia" />
+
+        <TextView
+            android:id="@+id/plainTextSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Velocidad"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewInitiative"
+            app:layout_constraintStart_toStartOf="@+id/cardViewInitiative"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewInitiative" />
+
+        <Switch
+            android:id="@+id/dndInspirationSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/garamond"
+            android:text="Inspiración"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cardViewSpeed"
+            app:layout_constraintStart_toStartOf="@+id/cardViewArmorClass"
+            app:layout_constraintTop_toBottomOf="@+id/plainTextCompetencia">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/plainTextPGM"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="15dp"
+                            android:text="Puntos de golpe máximos"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/dndCHeditTextPGM"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="2"
+                            app:layout_constraintBottom_toBottomOf="@+id/plainTextPGM"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/plainTextPGM" />
+
+                        <TextView
+                            android:id="@+id/plainTextPGA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="15dp"
+                            android:text="Puntos de golpe actuales"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/plainTextPGM" />
+
+                        <EditText
+                            android:id="@+id/dndCHeditTextPGA"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="2"
+                            app:layout_constraintBottom_toBottomOf="@+id/plainTextPGA"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/plainTextPGA" />
+
+                        <TextView
+                            android:id="@+id/plainTextPGT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="15dp"
+                            android:text="Puntos de golpe temporales"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/plainTextPGA" />
+
+                        <EditText
+                            android:id="@+id/dndCHeditTextPGT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="2"
+                            app:layout_constraintBottom_toBottomOf="@+id/plainTextPGT"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/plainTextPGT" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
