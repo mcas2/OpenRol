@@ -535,15 +535,16 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/garamond"
             android:text="Inspiración"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="@+id/cardView" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
-            android:layout_width="200dp"
-            android:layout_height="120dp"
+            android:layout_width="220dp"
+            android:layout_height="150dp"
             app:cardCornerRadius="10dp"
+            android:layout_marginLeft="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/cardViewSpeed"
             app:layout_constraintStart_toStartOf="@+id/cardViewArmorClass"
@@ -558,10 +559,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:layout_marginTop="15dp"
                             android:text="Puntos de golpe máximos"
+                            android:textSize="15sp"
+                            app:layout_constraintBottom_toTopOf="@+id/plainTextPGA"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <EditText
@@ -569,6 +570,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="2"
+                            android:inputType="number"
+                            android:textAlignment="center"
                             app:layout_constraintBottom_toBottomOf="@+id/plainTextPGM"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/plainTextPGM" />
@@ -578,16 +581,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:layout_marginTop="15dp"
+                            android:textSize="15sp"
                             android:text="Puntos de golpe actuales"
+                            app:layout_constraintBottom_toTopOf="@+id/plainTextPGT"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/plainTextPGM" />
+                            app:layout_constraintTop_toBottomOf="@+id/plainTextPGM" />
 
                         <EditText
                             android:id="@+id/dndCHeditTextPGA"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="2"
+                            android:inputType="number"
+                            android:textAlignment="center"
                             app:layout_constraintBottom_toBottomOf="@+id/plainTextPGA"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/plainTextPGA" />
@@ -597,16 +603,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:layout_marginTop="15dp"
+                            android:textSize="15sp"
                             android:text="Puntos de golpe temporales"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/plainTextPGA" />
+                            app:layout_constraintTop_toBottomOf="@+id/plainTextPGA" />
 
                         <EditText
                             android:id="@+id/dndCHeditTextPGT"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="2"
+                            android:inputType="number"
+                            android:textAlignment="center"
                             app:layout_constraintBottom_toBottomOf="@+id/plainTextPGT"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="@+id/plainTextPGT" />
