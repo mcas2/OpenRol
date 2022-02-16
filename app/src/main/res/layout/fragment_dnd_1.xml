@@ -154,11 +154,11 @@
             app:layout_constraintTop_toBottomOf="@id/cardViewCharisma" />
 
         <TextView
-            android:id="@+id/plainTextTraits"
+            android:id="@+id/plainTextAtributos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Características"
+            android:text="Atributos"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@
             app:layout_constraintEnd_toStartOf="@+id/cardViewConstitution"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/cardViewStregth"
-            app:layout_constraintTop_toBottomOf="@id/plainTextHabilidades">
+            app:layout_constraintTop_toBottomOf="@id/plainTextCaracteristicas">
 
                 <TextView
                     android:id="@+id/dndCSModDexterity"
@@ -399,7 +399,7 @@
             app:layout_constraintEnd_toStartOf="@+id/cardViewCompetencia"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/cardViewArmorClass"
-            app:layout_constraintTop_toBottomOf="@id/plainTextTraits">
+            app:layout_constraintTop_toBottomOf="@id/plainTextAtributos">
 
                 <EditText
                     android:id="@+id/dndCHeditTextSpeed"
@@ -539,11 +539,11 @@
             app:layout_constraintTop_toBottomOf="@id/cardViewCharisma" />
 
         <TextView
-            android:id="@+id/plainTextHabilidades"
+            android:id="@+id/plainTextCaracteristicas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Habilidades"
+            android:text="Características"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
