@@ -14,9 +14,11 @@
         <entry key="app/src/main/res/layout/activity_select_char_system2.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/card_layout_dnd.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_dnd_1.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_dnd_1.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_dnd_2.xml" value="0.35520833333333335" />
-        <entry key="app/src/main/res/layout/fragment_dnd_3.xml" value="0.29375" />
+        <entry key="app/src/main/res/layout/fragment_dnd_3.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/fragment_dnd_4.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/fragment_dnd_5.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/fragment_dnd_characters.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3328125" />
       </map>

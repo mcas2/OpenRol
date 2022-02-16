@@ -24,13 +24,13 @@ public class SelectCharDnD extends AppCompatActivity{
         // here we have created new array list and added data to it.
         // Arraylist for storing data
         dndCharModelArrayList = new ArrayList<>();
-        dndCharModelArrayList.add(new DnDCharModelCardView("Tipo", 4, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Señor", 3, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Crack", 1, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("El Manin", 45, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Hola", 4, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("aAaA", 4, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("King Gusano", 21, R.drawable.knight_coloured));
+        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 1", 4, R.drawable.knight_coloured));
+        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 2", 3, R.drawable.knight_coloured));
+        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 3", 1, R.drawable.knight_coloured));
+        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 4", 45, R.drawable.knight_coloured));
+        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 5", 4, R.drawable.knight_coloured));
+        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 6", 4, R.drawable.knight_coloured));
+        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 7", 21, R.drawable.knight_coloured));
 
         // we are initializing our adapter class and passing our arraylist to it.
         CardViewAdapter cardViewAdapter = new CardViewAdapter(this, dndCharModelArrayList);
