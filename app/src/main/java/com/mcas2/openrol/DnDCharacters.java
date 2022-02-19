@@ -33,8 +33,6 @@ public class DnDCharacters extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DnDCharacter character = new DnDCharacter();
-
         binding = ActivityDndCharactersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

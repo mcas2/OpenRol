@@ -16,10 +16,10 @@ import java.util.ArrayList;
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewholder> {
 
     private Context context;
-    private ArrayList<DnDCharModelCardView> dndCharModel = new ArrayList<>();
+    private ArrayList<DnDCharacter> dndCharModel = new ArrayList<>();
 
     // Constructor
-    public CardViewAdapter(Context context, ArrayList<DnDCharModelCardView> dndCharModel) {
+    public CardViewAdapter(Context context, ArrayList<DnDCharacter> dndCharModel) {
             this.context = context;
             this.dndCharModel = dndCharModel;
             }
@@ -35,10 +35,9 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
     @Override
     public void onBindViewHolder(@NonNull CardViewAdapter.Viewholder holder, int position) {
             // to set data to textview and imageview of each card layout
-            DnDCharModelCardView model = dndCharModel.get(position);
+            DnDCharacter model = dndCharModel.get(position);
             holder.cardViewDnDCharName.setText(model.getName());
             holder.cardViewDnDCharLevel.setText(String.valueOf(model.getLevel()));
-            holder.cardViewDnDCharImage.setImageResource(model.getImagen());
             }
 
     @Override
