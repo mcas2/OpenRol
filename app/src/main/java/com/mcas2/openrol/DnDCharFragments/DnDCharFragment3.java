@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mcas2.openrol.R;
 
 public class DnDCharFragment3 extends Fragment {
@@ -16,6 +17,18 @@ public class DnDCharFragment3 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dnd_3, container, false);
+        View view =  inflater.inflate(R.layout.fragment_dnd_3, container, false);
+
+
+
+        FloatingActionButton fabCC = view.findViewById(R.id.createCCWeapon);
+        fabCC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        return view;
     }
 }

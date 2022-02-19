@@ -1,4 +1,4 @@
-package com.mcas2.openrol;
+package com.mcas2.openrol.DnDCharClasses;
 
 public class DnDCharModelCardView {
     private String name;

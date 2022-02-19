@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mcas2.openrol.ui.main.CardViewAdapter;
-import com.mcas2.openrol.DnDCharModelCardView;
+import com.mcas2.openrol.DnDCharClasses.CardViewAdapter;
+import com.mcas2.openrol.DnDCharClasses.DnDCharModelCardView;
 
 import java.util.ArrayList;
 

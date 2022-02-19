@@ -15,17 +15,25 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mcas2.openrol.DnDCharClasses.DnDCharModelCardView;
+import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.ui.main.SectionsPagerAdapter;
 import com.mcas2.openrol.databinding.ActivityDndCharactersBinding;
+
+import java.util.ArrayList;
 
 public class DnDCharacters extends AppCompatActivity {
 
     private ActivityDndCharactersBinding binding;
 
+    private ArrayList<DnDCharModelCardView> dndCharModelArrayList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        DnDCharacter character = new DnDCharacter();
 
         binding = ActivityDndCharactersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

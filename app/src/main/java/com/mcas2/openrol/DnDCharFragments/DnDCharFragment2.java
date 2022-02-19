@@ -12,10 +12,13 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.mcas2.openrol.R;
-import com.mcas2.openrol.ui.main.CardViewAdapter;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class DnDCharFragment2 extends Fragment {
-
     private CardView cardViewAthletics;
     private CardView cardViewAcrobatics;
     private CardView cardViewSleightOfHand;
@@ -35,6 +38,7 @@ public class DnDCharFragment2 extends Fragment {
     private CardView cardViewPerformance;
     private CardView cardViewPersuasion;
     AlertDialog.Builder builder;
+    Random r;
 
     @Nullable
     @Override
@@ -42,6 +46,8 @@ public class DnDCharFragment2 extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_dnd_2, container, false);
 
         builder = new AlertDialog.Builder(getContext());
+        r = new Random();
+
 
         cardViewAthletics = (CardView) view.findViewById(R.id.cardViewAthletics);
         cardViewAcrobatics = (CardView) view.findViewById(R.id.cardViewAcrobatics);
@@ -71,5 +77,11 @@ public class DnDCharFragment2 extends Fragment {
 
         return view;
     }
+
+   // public String roll20Dice (int bonificador, int competente){
+   //     int result = r.nextInt(20)+1;
+//
+   //     return result;
+   // }
 
 }

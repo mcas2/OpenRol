@@ -1,4 +1,4 @@
-package com.mcas2.openrol.ui.main;
+package com.mcas2.openrol.DnDCharClasses;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mcas2.openrol.DnDCharModelCardView;
 import com.mcas2.openrol.R;
 
 import java.util.ArrayList;
