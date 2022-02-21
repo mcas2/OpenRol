@@ -11,6 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mcas2.openrol.R;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewholder> {
@@ -19,7 +25,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
     private ArrayList<DnDCharacter> dndCharModel = new ArrayList<>();
 
     // Constructor
-    public CardViewAdapter(Context context, ArrayList<DnDCharacter> dndCharModel) {
+    public CardViewAdapter(Context context, ArrayList<DnDCharacter> dndCharModel) throws IOException, ClassNotFoundException {
             this.context = context;
             this.dndCharModel = dndCharModel;
             }
@@ -60,4 +66,5 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
             cardViewDnDCharLevel = itemView.findViewById(R.id.cardViewDnDCharLevel);
         }
     }
+
 }

@@ -1,5 +1,6 @@
 package com.mcas2.openrol;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,13 +13,17 @@ import com.mcas2.openrol.DnDCharClasses.CardViewAdapter;
 import com.mcas2.openrol.DnDCharClasses.DnDCharModelCardView;
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.time.Instant;
 import java.util.ArrayList;
 
 
 public class SelectCharDnD extends AppCompatActivity{
 
     private ArrayList<DnDCharModelCardView> dndCharModelArrayList;
-    private ArrayList<DnDCharacter> characters;
+    private ArrayList<DnDCharacter> characters = new ArrayList<>();
     private FloatingActionButton fabAddCharacter;
 
     @Override
@@ -32,23 +37,25 @@ public class SelectCharDnD extends AppCompatActivity{
         fabAddCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                characters.add(new DnDCharacter());
+                Intent intent = new Intent(SelectCharDnD.this, DnDCharacters.class);
+                startActivity(intent);
             }
         });
 
         // here we have created new array list and added data to it.
         // Arraylist for storing data
-        dndCharModelArrayList = new ArrayList<>();
-        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 1", 4, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 2", 3, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 3", 1, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 4", 45, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 5", 4, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 6", 4, R.drawable.knight_coloured));
-        dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 7", 21, R.drawable.knight_coloured));
+        //dndCharModelArrayList = new ArrayList<>();
+        //dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 1", 4, R.drawable.knight_coloured));
 
         // we are initializing our adapter class and passing our arraylist to it.
-        CardViewAdapter cardViewAdapter = new CardViewAdapter(this, characters);
+        CardViewAdapter cardViewAdapter = null;
+        try {
+            cardViewAdapter = new CardViewAdapter(this, loadCharacter());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         // below line is for setting a layout manager for our recycler view.
         // here we are creating vertical list so we will provide orientation as vertical
@@ -58,6 +65,12 @@ public class SelectCharDnD extends AppCompatActivity{
         dndCharRecyclerView.setLayoutManager(linearLayoutManager);
         dndCharRecyclerView.setAdapter(cardViewAdapter);
 
+    }
 
+    public static ArrayList<DnDCharacter> loadCharacter() throws IOException, ClassNotFoundException {
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream("dnd_characters.dat"));
+        ArrayList<DnDCharacter> characters = (ArrayList<DnDCharacter>) is.readObject();
+        is.close();
+        return characters;
     }
 }

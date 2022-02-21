@@ -6,8 +6,16 @@ import java.util.ArrayList;
 public class DnDCharacter implements Serializable {
     private String name;
     private int level;
-    private String charclass;
     private String race;
+    private String charclass;
+    private int armorClass;
+    private int competencia;
+    private int initiative;
+    private int speed;
+    private int pgm;
+    private int pga;
+    private int pgt;
+    private String dg;
 
     private int strength;
     private int dexterity;
@@ -35,15 +43,7 @@ public class DnDCharacter implements Serializable {
     private int performance;
     private int persuasion;
 
-    private int armorClass;
-    private int competencia;
-    private int speed;
-    private int initiative;
 
-    private int pgm;
-    private int pga;
-    private int pgt;
-    private String dg;
 
     private boolean inspiration;
 
@@ -52,14 +52,26 @@ public class DnDCharacter implements Serializable {
 
     private ArrayList<DnDWeapon> dndWeapons;
 
-    public DnDCharacter() {
-    }
-
-    public DnDCharacter(String name, int level, String charclass, String race, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, int athletics, int acrobatics, int sleightOfHand, int stealth, int arcana, int history, int investigation, int nature, int religion, int animalHandling, int insight, int medicine, int perception, int survival, int deception, int intimidation, int performance, int persuasion, int armorClass, int competencia, int speed, int initiative, int pgm, int pga, int pgt, String dg, boolean inspiration, String magic, String lore, ArrayList<DnDWeapon> dndWeapons) {
+    public DnDCharacter(String name, int level, String race, String charclass, int armorClass,
+                        int competencia, int initiative, int speed, int pgm, int pga, int pgt,
+                        String dg, int strength, int dexterity, int constitution, int intelligence,
+                        int wisdom, int charisma, int athletics, int acrobatics, int sleightOfHand,
+                        int stealth, int arcana, int history, int investigation, int nature, int religion,
+                        int animalHandling, int insight, int medicine, int perception, int survival,
+                        int deception, int intimidation, int performance, int persuasion, boolean inspiration,
+                        String magic, String lore, ArrayList<DnDWeapon> dndWeapons) {
         this.name = name;
         this.level = level;
-        this.charclass = charclass;
         this.race = race;
+        this.charclass = charclass;
+        this.armorClass = armorClass;
+        this.competencia = competencia;
+        this.initiative = initiative;
+        this.speed = speed;
+        this.pgm = pgm;
+        this.pga = pga;
+        this.pgt = pgt;
+        this.dg = dg;
         this.strength = strength;
         this.dexterity = dexterity;
         this.constitution = constitution;
@@ -84,14 +96,6 @@ public class DnDCharacter implements Serializable {
         this.intimidation = intimidation;
         this.performance = performance;
         this.persuasion = persuasion;
-        this.armorClass = armorClass;
-        this.competencia = competencia;
-        this.speed = speed;
-        this.initiative = initiative;
-        this.pgm = pgm;
-        this.pga = pga;
-        this.pgt = pgt;
-        this.dg = dg;
         this.inspiration = inspiration;
         this.magic = magic;
         this.lore = lore;
