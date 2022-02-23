@@ -72,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardViewInitiative" />
 
         <EditText
-            android:id="@+id/nameEdit"
+            android:id="@+id/dndCHeditTextName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="9"
@@ -415,7 +415,7 @@
         </androidx.cardview.widget.CardView>
 
         <EditText
-            android:id="@+id/dndCHeditLevel"
+            android:id="@+id/dndCHeditTextLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
@@ -556,7 +556,7 @@
             android:layout_marginTop="20dp"
             android:text="Nivel"
             android:textSize="20sp"
-            app:layout_constraintEnd_toStartOf="@id/dndCHeditLevel"
+            app:layout_constraintEnd_toStartOf="@id/dndCHeditTextLevel"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
