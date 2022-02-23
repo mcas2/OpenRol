@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mcas2.openrol" >
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +22,9 @@
             android:name=".DnDCharacters"
             android:exported="false"
             android:label="@string/title_activity_dn_dcharacters"
-            android:theme="@style/Theme.OpenRol.NoActionBar" />
+            android:theme="@style/Theme.OpenRol.NoActionBar"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity
             android:name=".Dices"
             android:exported="false"

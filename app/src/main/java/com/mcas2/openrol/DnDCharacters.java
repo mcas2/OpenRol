@@ -1,33 +1,27 @@
 package com.mcas2.openrol;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Environment;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mcas2.openrol.DnDCharClasses.DnDCharModelCardView;
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.DnDCharClasses.DnDWeapon;
 import com.mcas2.openrol.ui.main.SectionsPagerAdapter;
 import com.mcas2.openrol.databinding.ActivityDndCharactersBinding;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.attribute.AclEntry;
 import java.util.ArrayList;
 
 public class DnDCharacters extends AppCompatActivity {
@@ -35,7 +29,6 @@ public class DnDCharacters extends AppCompatActivity {
     private ActivityDndCharactersBinding binding;
     private ArrayList<DnDCharacter> characters = new ArrayList<>();
     private ArrayList<DnDWeapon> weapons = new ArrayList<>();
-    private ArrayList<DnDCharModelCardView> dndCharModelArrayList;
     private EditText name;
     private EditText level;
     private EditText armorClass;
@@ -90,7 +83,7 @@ public class DnDCharacters extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
         //Básicos
-        name = (EditText) findViewById(R.id.dndCHeditTextName);
+        name = findViewById(R.id.dndCHeditTextName);
         level = (EditText) findViewById(R.id.dndCHeditTextLevel);
         dndRace = (Spinner) findViewById(R.id.raceSpinnerDnD);
         dndClass = (Spinner) findViewById(R.id.classSpinnerDnD);
@@ -137,6 +130,7 @@ public class DnDCharacters extends AppCompatActivity {
         lore = (EditText) findViewById(R.id.editTextLore);
         inspiration = findViewById(R.id.dndInspirationSwitch);
 
+        String nameVar = name.getText().toString();
 
 
         FloatingActionButton fabSave = binding.fabSave;
@@ -146,65 +140,63 @@ public class DnDCharacters extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     characters.add(new DnDCharacter(
-                            name.getText().toString(),
-                            Integer.parseInt(level.getText().toString()),
-                            dndRace.getSelectedItem().toString(),
-                            dndClass.getSelectedItem().toString(),
-                            Integer.parseInt(armorClass.getText().toString()),
-                            Integer.parseInt(competencia.getText().toString()),
-                            Integer.parseInt(initiative.getText().toString()),
-                            Integer.parseInt(speed.getText().toString()),
-                            Integer.parseInt(pgm.getText().toString()),
-                            Integer.parseInt(pga.getText().toString()),
-                            Integer.parseInt(pgt.getText().toString()),
-                            dg.getText().toString(),
-                            Integer.parseInt(strength.getText().toString()),
-                            Integer.parseInt(dexterity.getText().toString()),
-                            Integer.parseInt(constitution.getText().toString()),
-                            Integer.parseInt(intelligence.getText().toString()),
-                            Integer.parseInt(wisdom.getText().toString()),
-                            Integer.parseInt(charisma.getText().toString()),
-                            Integer.parseInt(athletics.getText().toString()),
-                            Integer.parseInt(acrobatics.getText().toString()),
-                            Integer.parseInt(sleightOfHands.getText().toString()),
-                            Integer.parseInt(stealth.getText().toString()),
-                            Integer.parseInt(arcana.getText().toString()),
-                            Integer.parseInt(history.getText().toString()),
-                            Integer.parseInt(investigation.getText().toString()),
-                            Integer.parseInt(nature.getText().toString()),
-                            Integer.parseInt(religion.getText().toString()),
-                            Integer.parseInt(animalHandling.getText().toString()),
-                            Integer.parseInt(insight.getText().toString()),
-                            Integer.parseInt(medicine.getText().toString()),
-                            Integer.parseInt(perception.getText().toString()),
-                            Integer.parseInt(survival.getText().toString()),
-                            Integer.parseInt(deception.getText().toString()),
-                            Integer.parseInt(intimidation.getText().toString()),
-                            Integer.parseInt(performance.getText().toString()),
-                            Integer.parseInt(persuasion.getText().toString()),
-                            inspiration.isChecked(),
-                            magic.getText().toString(),
-                            lore.getText().toString(),
-                            weapons
+                            nameVar
+                            //Integer.parseInt(level.getText().toString()),
+                            //dndRace.getSelectedItem().toString(),
+                            //dndClass.getSelectedItem().toString(),
+                            //Integer.parseInt(armorClass.getText().toString()),
+                            //Integer.parseInt(competencia.getText().toString()),
+                            //Integer.parseInt(initiative.getText().toString()),
+                            //Integer.parseInt(speed.getText().toString()),
+                            //Integer.parseInt(pgm.getText().toString()),
+                            //Integer.parseInt(pga.getText().toString()),
+                            //Integer.parseInt(pgt.getText().toString()),
+                            //dg.getText().toString(),
+                            //Integer.parseInt(strength.getText().toString()),
+                            //Integer.parseInt(dexterity.getText().toString()),
+                            //Integer.parseInt(constitution.getText().toString()),
+                            //Integer.parseInt(intelligence.getText().toString()),
+                            //Integer.parseInt(wisdom.getText().toString()),
+                            //Integer.parseInt(charisma.getText().toString()),
+                            //Integer.parseInt(athletics.getText().toString()),
+                            //Integer.parseInt(acrobatics.getText().toString()),
+                            //Integer.parseInt(sleightOfHands.getText().toString()),
+                            //Integer.parseInt(stealth.getText().toString()),
+                            //Integer.parseInt(arcana.getText().toString()),
+                            //Integer.parseInt(history.getText().toString()),
+                            //Integer.parseInt(investigation.getText().toString()),
+                            //Integer.parseInt(nature.getText().toString()),
+                            //Integer.parseInt(religion.getText().toString()),
+                            //Integer.parseInt(animalHandling.getText().toString()),
+                            //Integer.parseInt(insight.getText().toString()),
+                            //Integer.parseInt(medicine.getText().toString()),
+                            //Integer.parseInt(perception.getText().toString()),
+                            //Integer.parseInt(survival.getText().toString()),
+                            //Integer.parseInt(deception.getText().toString()),
+                            //Integer.parseInt(intimidation.getText().toString()),
+                            //Integer.parseInt(performance.getText().toString()),
+                            //Integer.parseInt(persuasion.getText().toString()),
+                            //inspiration.isChecked(),
+                            //magic.getText().toString(),
+                            //lore.getText().toString(),
+                            //weapons
                     ));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 saveCharacter(characters);
-                try {
-                    Toast toast = Toast.makeText(getApplicationContext(), name.getText().toString() + " entró en los archivos.", Toast.LENGTH_SHORT);
-                    toast.show();
-                } catch (NullPointerException e){
-                    e.printStackTrace();
-                }
+
+                Toast toast = Toast.makeText(getApplicationContext(), nameVar + " entró en los archivos.", Toast.LENGTH_SHORT);
+                toast.show();
             }});
         }
 
 
-
+        //Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
     public void saveCharacter(ArrayList<DnDCharacter> characters){
         try {
-            FileOutputStream file = new FileOutputStream("dnd_characters.dat");
+            File filename = new File(getFilesDir(),"/"+ "dnd_characters.dat");
+            FileOutputStream file = new FileOutputStream(filename);
             ObjectOutputStream os = new ObjectOutputStream(file);
             os.writeObject(characters);
             os.close();

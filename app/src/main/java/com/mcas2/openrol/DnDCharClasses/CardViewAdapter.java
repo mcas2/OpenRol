@@ -59,7 +59,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
         private ImageView cardViewDnDCharImage;
         private TextView cardViewDnDCharName, cardViewDnDCharLevel;
 
-        public Viewholder(@NonNull View itemView) {
+         public Viewholder(@NonNull View itemView) {
             super(itemView);
             cardViewDnDCharImage = itemView.findViewById(R.id.cardViewDnDCharImage);
             cardViewDnDCharName = itemView.findViewById(R.id.cardViewDnDCharName);

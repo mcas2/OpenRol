@@ -10,19 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mcas2.openrol.DnDCharClasses.CardViewAdapter;
-import com.mcas2.openrol.DnDCharClasses.DnDCharModelCardView;
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.time.Instant;
 import java.util.ArrayList;
 
 
 public class SelectCharDnD extends AppCompatActivity{
 
-    private ArrayList<DnDCharModelCardView> dndCharModelArrayList;
     private ArrayList<DnDCharacter> characters = new ArrayList<>();
     private FloatingActionButton fabAddCharacter;
 
@@ -50,10 +48,8 @@ public class SelectCharDnD extends AppCompatActivity{
         // we are initializing our adapter class and passing our arraylist to it.
         CardViewAdapter cardViewAdapter = null;
         try {
-            cardViewAdapter = new CardViewAdapter(this, loadCharacter());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            cardViewAdapter = new CardViewAdapter(this, loadCharacters());
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -67,8 +63,9 @@ public class SelectCharDnD extends AppCompatActivity{
 
     }
 
-    public static ArrayList<DnDCharacter> loadCharacter() throws IOException, ClassNotFoundException {
-        ObjectInputStream is = new ObjectInputStream(new FileInputStream("dnd_characters.dat"));
+    public ArrayList<DnDCharacter> loadCharacters() throws IOException, ClassNotFoundException {
+        File filename = new File(getFilesDir(),"/"+ "dnd_characters.dat");
+        ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename));
         ArrayList<DnDCharacter> characters = (ArrayList<DnDCharacter>) is.readObject();
         is.close();
         return characters;

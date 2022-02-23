@@ -43,6 +43,7 @@ public class DnDCharacter implements Serializable {
     private int performance;
     private int persuasion;
 
+    private int imagen;
 
 
     private boolean inspiration;
@@ -58,8 +59,8 @@ public class DnDCharacter implements Serializable {
                         int wisdom, int charisma, int athletics, int acrobatics, int sleightOfHand,
                         int stealth, int arcana, int history, int investigation, int nature, int religion,
                         int animalHandling, int insight, int medicine, int perception, int survival,
-                        int deception, int intimidation, int performance, int persuasion, boolean inspiration,
-                        String magic, String lore, ArrayList<DnDWeapon> dndWeapons) {
+                        int deception, int intimidation, int performance, int persuasion,
+                        boolean inspiration, String magic, String lore, ArrayList<DnDWeapon> dndWeapons) {
         this.name = name;
         this.level = level;
         this.race = race;
@@ -100,6 +101,10 @@ public class DnDCharacter implements Serializable {
         this.magic = magic;
         this.lore = lore;
         this.dndWeapons = dndWeapons;
+    }
+
+    public DnDCharacter(String name) {
+        this.name = name;
     }
 
     public String getName() {
