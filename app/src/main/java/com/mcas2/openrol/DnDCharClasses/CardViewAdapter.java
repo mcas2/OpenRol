@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewholder> {
 
     private Context context;
-    private ArrayList<DnDCharacter> dndCharModel = new ArrayList<>();
+    private ArrayList<DnDCharacter> dndCharModel;
 
     // Constructor
     public CardViewAdapter(Context context, ArrayList<DnDCharacter> dndCharModel) throws IOException, ClassNotFoundException {

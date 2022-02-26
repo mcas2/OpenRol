@@ -30,7 +30,7 @@ public class SelectCharSystem extends AppCompatActivity {
         selCharAquelarre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectCharSystem.this, DnDCharacters.class);
+                Intent intent = new Intent(SelectCharSystem.this, DnDCharacterFactory.class);
                 startActivity(intent);
             }
         });

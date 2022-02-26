@@ -2,6 +2,7 @@ package com.mcas2.openrol;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,16 +18,19 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class SelectCharDnD extends AppCompatActivity{
 
-    private ArrayList<DnDCharacter> characters = new ArrayList<>();
     private FloatingActionButton fabAddCharacter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OpenRol context = (OpenRol) getApplicationContext();
+        Map<String, DnDCharacter> characters = context.getCharacters();
+
         setContentView(R.layout.activity_select_char_dnd);
         RecyclerView dndCharRecyclerView = findViewById(R.id.selectCharDnDRV);
 
@@ -35,22 +39,17 @@ public class SelectCharDnD extends AppCompatActivity{
         fabAddCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectCharDnD.this, DnDCharacters.class);
+                Intent intent = new Intent(SelectCharDnD.this, DnDCharacterFactory.class);
                 startActivity(intent);
             }
         });
 
-        // here we have created new array list and added data to it.
-        // Arraylist for storing data
-        //dndCharModelArrayList = new ArrayList<>();
-        //dndCharModelArrayList.add(new DnDCharModelCardView("Personaje 1", 4, R.drawable.knight_coloured));
-
         // we are initializing our adapter class and passing our arraylist to it.
         CardViewAdapter cardViewAdapter = null;
         try {
-            cardViewAdapter = new CardViewAdapter(this, loadCharacters());
+            cardViewAdapter = new CardViewAdapter(this, new ArrayList<DnDCharacter>(characters.values()));
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            Log.e("", Log.getStackTraceString(e));
         }
 
         // below line is for setting a layout manager for our recycler view.
@@ -61,13 +60,5 @@ public class SelectCharDnD extends AppCompatActivity{
         dndCharRecyclerView.setLayoutManager(linearLayoutManager);
         dndCharRecyclerView.setAdapter(cardViewAdapter);
 
-    }
-
-    public ArrayList<DnDCharacter> loadCharacters() throws IOException, ClassNotFoundException {
-        File filename = new File(getFilesDir(),"/"+ "dnd_characters.dat");
-        ObjectInputStream is = new ObjectInputStream(new FileInputStream(filename));
-        ArrayList<DnDCharacter> characters = (ArrayList<DnDCharacter>) is.readObject();
-        is.close();
-        return characters;
     }
 }

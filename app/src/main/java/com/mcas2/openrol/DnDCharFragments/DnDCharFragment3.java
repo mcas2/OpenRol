@@ -10,9 +10,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.R;
 
 public class DnDCharFragment3 extends Fragment {
+
+    private DnDCharacter character;
+
+    public DnDCharFragment3(DnDCharacter character) {
+        this.character = character;
+    }
+
 
     @Nullable
     @Override

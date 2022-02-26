@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.R;
 
 import java.util.HashMap;
@@ -39,6 +40,13 @@ public class DnDCharFragment2 extends Fragment {
     private CardView cardViewPersuasion;
     AlertDialog.Builder builder;
     Random r;
+
+    private DnDCharacter character;
+
+    public DnDCharFragment2(DnDCharacter character) {
+        this.character = character;
+    }
+
 
     @Nullable
     @Override

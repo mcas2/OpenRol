@@ -21,6 +21,11 @@
         <item name="colorOnPrimary">@color/montaña</item>
     </style>
 
+    <style name="OrangeButton" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/rojo_anaranjado</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
     <style name="Theme.OpenRol.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

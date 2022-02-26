@@ -14,21 +14,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.R;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DnDCharFragment1 extends Fragment {
-    private EditText strength;
-    private EditText dexterity;
-    private EditText constitution;
-    private EditText intelligence;
-    private EditText wisdom;
-    private EditText charisma;
-    private TextView modStrength;
-    private TextView modDexterity;
-    private TextView modConstitucion;
-    private TextView modIntelligence;
-    private TextView modWisdom;
-    private TextView modCharisma;
+    public EditText name;
+    private Map<String, EditText> editTextsCaracteristicas = new HashMap<>();
+    //private Map<String, EditText> editText = new HashMap<>();
+    private Map<String, TextView> textViews = new HashMap<>();
+
+    private DnDCharacter character;
+
+    public DnDCharFragment1(DnDCharacter character) {
+        this.character = character;
+    }
 
     @Nullable
     @Override
@@ -45,83 +47,55 @@ public class DnDCharFragment1 extends Fragment {
         ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.dndRaces, R.layout.support_simple_spinner_dropdown_item);
         raceAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
+        //Basicos
+        name = view.findViewById(R.id.dndCHeditTextName);
+        name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    character.setName(name.getText().toString());
+                }
+            }
+        });
+
+        //Lo que ya estaba
         raceSpinner.setAdapter(raceAdapter);
 
-        strength = (EditText) view.findViewById(R.id.dndCHeditTextStrength);
-        dexterity = (EditText) view.findViewById(R.id.dndCHeditTextDexterity);
-        constitution = (EditText) view.findViewById(R.id.dndCHeditTextConstitution);
-        intelligence = (EditText) view.findViewById(R.id.dndCHeditTextIntelligence);
-        wisdom = (EditText) view.findViewById(R.id.dndCHeditTextWisdom);
-        charisma = (EditText) view.findViewById(R.id.dndCHeditTextCharisma);
-        modStrength = view.findViewById(R.id.dndCSModStrength);
-        modDexterity = view.findViewById(R.id.dndCSModDexterity);
-        modConstitucion = view.findViewById(R.id.dndCSModConstitution);
-        modIntelligence = view.findViewById(R.id.dndCSModIntelligence);
-        modWisdom = view.findViewById(R.id.dndCSModWisdom);
-        modCharisma = view.findViewById(R.id.dndCSModCharisma);
+        editTextsCaracteristicas.put("strength", view.findViewById(R.id.dndCHeditTextStrength));
+        editTextsCaracteristicas.put("dexterity", view.findViewById(R.id.dndCHeditTextDexterity));
+        editTextsCaracteristicas.put("constitution", view.findViewById(R.id.dndCHeditTextConstitution));
+        editTextsCaracteristicas.put("intelligence", view.findViewById(R.id.dndCHeditTextIntelligence));
+        editTextsCaracteristicas.put("wisdom", view.findViewById(R.id.dndCHeditTextWisdom));
+        editTextsCaracteristicas.put("charisma", view.findViewById(R.id.dndCHeditTextCharisma));
 
-        strength.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                String numAbilityText = String.valueOf(strength.getText());
-                Integer numAbility = Integer.parseInt(numAbilityText);
-                Integer modificador = assignAbilityScore(numAbility);
-                modStrength.setText(String.valueOf(modificador));
-            }
-        });
+        textViews.put("strength", view.findViewById(R.id.dndCSModStrength));
+        textViews.put("dexterity", view.findViewById(R.id.dndCSModDexterity));
+        textViews.put("constitution", view.findViewById(R.id.dndCSModConstitution));
+        textViews.put("intelligence", view.findViewById(R.id.dndCSModIntelligence));
+        textViews.put("wisdom", view.findViewById(R.id.dndCSModWisdom));
+        textViews.put("charisma", view.findViewById(R.id.dndCSModCharisma));
 
-        dexterity.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                String numAbilityText = String.valueOf(dexterity.getText());
-                Integer numAbility = Integer.parseInt(numAbilityText);
-                Integer modificador = assignAbilityScore(numAbility);
-                modDexterity.setText(String.valueOf(modificador));
-            }
-        });
 
-        constitution.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                String numAbilityText = String.valueOf(constitution.getText());
-                Integer numAbility = Integer.parseInt(numAbilityText);
-                Integer modificador = assignAbilityScore(numAbility);
-                modConstitucion.setText(String.valueOf(modificador));
-            }
-        });
-
-        intelligence.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                String numAbilityText = String.valueOf(intelligence.getText());
-                Integer numAbility = Integer.parseInt(numAbilityText);
-                Integer modificador = assignAbilityScore(numAbility);
-                modIntelligence.setText(String.valueOf(modificador));
-            }
-        });
-
-        wisdom.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                String numAbilityText = String.valueOf(wisdom.getText());
-                Integer numAbility = Integer.parseInt(numAbilityText);
-                Integer modificador = assignAbilityScore(numAbility);
-                modWisdom.setText(String.valueOf(modificador));
-            }
-        });
-
-        charisma.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                String numAbilityText = String.valueOf(charisma.getText());
-                Integer numAbility = Integer.parseInt(numAbilityText);
-                Integer modificador = assignAbilityScore(numAbility);
-                modCharisma.setText(String.valueOf(modificador));
-            }
-        });
+        for (String key : editTextsCaracteristicas.keySet()) {
+            editTextsCaracteristicas.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+                        String numAbilityText = String.valueOf(editTextsCaracteristicas.get(key).getText());
+                        Integer numAbility = Integer.parseInt(numAbilityText);
+                        Integer modificador = assignAbilityScore(numAbility);
+                        textViews.get(key).setText(String.valueOf(modificador));
+                        // clave
+                        character.setAttribute(key, numAbility);
+                    }
+                }
+            });
+        }
 
         return view;
     }
+
+
 
     public Integer assignAbilityScore (Integer numAbility){
         switch (numAbility){

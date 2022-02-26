@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -21,7 +22,7 @@ public class Dices extends AppCompatActivity {
     public EditText mod;
     public TextView result;
     public TextView resultHistory;
-    public Button roll;
+    public ImageButton roll;
     public Button erase;
     public Button changeOp;
     public boolean isNegative;
@@ -43,7 +44,7 @@ public class Dices extends AppCompatActivity {
         result = (TextView) findViewById(R.id.result);
         resultHistory = (TextView) findViewById(R.id.resultHistory);
 
-        roll = (Button) findViewById(R.id.rollDicesButton);
+        roll = (ImageButton) findViewById(R.id.rollDicesButton);
         erase = (Button) findViewById(R.id.eraseHistory);
         changeOp = (Button) findViewById(R.id.changeOperator);
         isNegative = false;

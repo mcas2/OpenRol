@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.DnDCharFragments.DnDCharFragment1;
 import com.mcas2.openrol.DnDCharFragments.DnDCharFragment2;
 import com.mcas2.openrol.DnDCharFragments.DnDCharFragment3;
@@ -20,6 +21,8 @@ import com.mcas2.openrol.R;
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    // character we are building
+    private DnDCharacter character;
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{
@@ -32,9 +35,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     private final Context mContext;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter(Context context, FragmentManager fm, DnDCharacter character) {
         super(fm);
         mContext = context;
+        this.character = character;
     }
 
     @Override
@@ -42,22 +46,22 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position){
             case 0:
-                fragment = new DnDCharFragment1();
-                break;
+                fragment = new DnDCharFragment1(character);
+                return fragment;
             case 1:
-                fragment = new DnDCharFragment2();
-                break;
+                fragment = new DnDCharFragment2(character);
+                return fragment;
             case 2:
-                fragment = new DnDCharFragment3();
-                break;
+                fragment = new DnDCharFragment3(character);
+                return fragment;
             case 3:
-                fragment = new DnDCharFragment4();
-                break;
+                fragment = new DnDCharFragment4(character);
+                return fragment;
             case 4:
-                fragment = new DnDCharFragment5();
-                break;
+                fragment = new DnDCharFragment5(character);
+                return fragment;
         }
-        return fragment;
+        return null;
     }
 
     @Nullable
