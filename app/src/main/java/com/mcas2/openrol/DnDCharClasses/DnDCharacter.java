@@ -19,12 +19,11 @@ public class DnDCharacter implements Serializable {
         this.miscAttributes = new HashMap<>();
     }
 
-    public DnDCharacter(Map<String, Integer> attributes, Map<String, String> miscAttributes, String name, int level, List<DnDWeapon> dndWeapons) {
+    public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes) {
         this.attributes = attributes;
         this.miscAttributes = miscAttributes;
         this.name = name;
         this.level = level;
-        this.dndWeapons = dndWeapons;
     }
 
     public Integer getAttribute(String nameAttribute){

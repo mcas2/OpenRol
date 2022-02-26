@@ -75,6 +75,11 @@ public class DnDCharFragment1 extends Fragment {
         textViews.put("wisdom", view.findViewById(R.id.dndCSModWisdom));
         textViews.put("charisma", view.findViewById(R.id.dndCSModCharisma));
 
+        for (String key: textViews.keySet())  {
+            if (character.getAttribute(key) != null) {
+                textViews.get(key).setText(character.getAttribute(key));
+            }
+        }
 
         for (String key : editTextsCaracteristicas.keySet()) {
             editTextsCaracteristicas.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {

@@ -11,24 +11,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mcas2.openrol.R;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewholder> {
 
     private Context context;
-    private ArrayList<DnDCharacter> dndCharModel;
+    private List<DnDCharacter> characterList;
 
     // Constructor
-    public CardViewAdapter(Context context, ArrayList<DnDCharacter> dndCharModel) throws IOException, ClassNotFoundException {
+    public CardViewAdapter(Context context, ArrayList<DnDCharacter> characterList) throws IOException, ClassNotFoundException {
             this.context = context;
-            this.dndCharModel = dndCharModel;
-            }
+            this.characterList = characterList;
+    }
 
     @NonNull
     @Override
@@ -41,7 +37,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
     @Override
     public void onBindViewHolder(@NonNull CardViewAdapter.Viewholder holder, int position) {
             // to set data to textview and imageview of each card layout
-            DnDCharacter model = dndCharModel.get(position);
+            DnDCharacter model = characterList.get(position);
             holder.cardViewDnDCharName.setText(model.getName());
             holder.cardViewDnDCharLevel.setText(String.valueOf(model.getLevel()));
             }
@@ -50,7 +46,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
     public int getItemCount() {
             // this method is used for showing number
             // of card items in recycler view.
-            return dndCharModel.size();
+            return characterList.size();
             }
 
     // View holder class for initializing of

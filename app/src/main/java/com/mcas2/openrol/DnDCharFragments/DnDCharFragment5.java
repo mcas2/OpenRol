@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import com.mcas2.openrol.R;
 public class DnDCharFragment5 extends Fragment {
 
     private DnDCharacter character;
+    private EditText lore;
 
     public DnDCharFragment5(DnDCharacter character) {
         this.character = character;
@@ -24,6 +26,9 @@ public class DnDCharFragment5 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dnd_5, container, false);
+        View view = inflater.inflate(R.layout.fragment_dnd_5, container, false);
+        lore = (EditText) view.findViewById(R.id.editTextLore);
+
+        return view;
     }
 }

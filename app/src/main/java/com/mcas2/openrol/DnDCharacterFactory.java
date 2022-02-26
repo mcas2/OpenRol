@@ -76,7 +76,6 @@ public class DnDCharacterFactory extends AppCompatActivity {
     private EditText intimidation;
     private EditText performance;
     private EditText persuasion;
-    private EditText magic;
     private EditText lore;
     private Spinner dndRace;
     private Spinner dndClass;
@@ -141,8 +140,6 @@ public class DnDCharacterFactory extends AppCompatActivity {
         persuasion = (EditText) findViewById(R.id.dndCHeditTextPersuasion);
 
         //Otros
-        magic = (EditText) findViewById(R.id.editTextMagic);
-        lore = (EditText) findViewById(R.id.editTextLore);
         inspiration = findViewById(R.id.dndInspirationSwitch);
 
         FloatingActionButton fabSave = binding.fabSave;

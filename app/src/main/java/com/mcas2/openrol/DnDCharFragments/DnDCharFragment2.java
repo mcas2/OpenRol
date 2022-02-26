@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,24 +21,8 @@ import java.util.Map;
 import java.util.Random;
 
 public class DnDCharFragment2 extends Fragment {
-    private CardView cardViewAthletics;
-    private CardView cardViewAcrobatics;
-    private CardView cardViewSleightOfHand;
-    private CardView cardViewStealth;
-    private CardView cardViewArcana;
-    private CardView cardViewHistory;
-    private CardView cardViewInvestigation;
-    private CardView cardViewNature;
-    private CardView cardViewReligion;
-    private CardView cardViewAnimalHandling;
-    private CardView cardViewInsight;
-    private CardView cardViewMedicine;
-    private CardView cardViewPerception;
-    private CardView cardViewSurvival;
-    private CardView cardViewDeception;
-    private CardView cardViewIntimidation;
-    private CardView cardViewPerformance;
-    private CardView cardViewPersuasion;
+    private Map<String, CardView> cardViewHashMap = new HashMap<>();
+
     AlertDialog.Builder builder;
     Random r;
 
@@ -56,25 +41,26 @@ public class DnDCharFragment2 extends Fragment {
         builder = new AlertDialog.Builder(getContext());
         r = new Random();
 
+        cardViewHashMap.put("athletics", view.findViewById(R.id.cardViewAthletics));
+        cardViewHashMap.put("acrobatics", view.findViewById(R.id.cardViewAcrobatics));
+        cardViewHashMap.put("sleightOfHand", view.findViewById(R.id.cardViewSleightOfHands));
+        cardViewHashMap.put("stealth", view.findViewById(R.id.cardViewStealth));
+        cardViewHashMap.put("arcana", view.findViewById(R.id.cardViewArcana));
+        cardViewHashMap.put("history", view.findViewById(R.id.cardViewHistory));
+        cardViewHashMap.put("investigation", view.findViewById(R.id.cardViewInvestigation));
+        cardViewHashMap.put("nature", view.findViewById(R.id.cardViewNature));
+        cardViewHashMap.put("religion", view.findViewById(R.id.cardViewReligion));
+        cardViewHashMap.put("animalHandling", view.findViewById(R.id.cardViewAnimalHandling));
+        cardViewHashMap.put("insight", view.findViewById(R.id.cardViewInsight));
+        cardViewHashMap.put("medicine", view.findViewById(R.id.cardViewMedicine));
+        cardViewHashMap.put("perception", view.findViewById(R.id.cardViewPerception));
+        cardViewHashMap.put("survival", view.findViewById(R.id.cardViewSurvival));
+        cardViewHashMap.put("deception", view.findViewById(R.id.cardViewDeception));
+        cardViewHashMap.put("intimidation", view.findViewById(R.id.cardViewIntimidation));
+        cardViewHashMap.put("performance", view.findViewById(R.id.cardViewPerformance));
+        cardViewHashMap.put("persuasion", view.findViewById(R.id.cardViewPersuasion));
 
-        cardViewAthletics = (CardView) view.findViewById(R.id.cardViewAthletics);
-        cardViewAcrobatics = (CardView) view.findViewById(R.id.cardViewAcrobatics);
-        cardViewSleightOfHand = (CardView) view.findViewById(R.id.cardViewSleightOfHands);
-        cardViewStealth = (CardView) view.findViewById(R.id.cardViewStealth);
-        cardViewArcana = (CardView) view.findViewById(R.id.cardViewArcana);
-        cardViewHistory = (CardView) view.findViewById(R.id.cardViewHistory);
-        cardViewInvestigation = (CardView) view.findViewById(R.id.cardViewInvestigation);
-        cardViewNature = (CardView) view.findViewById(R.id.cardViewNature);
-        cardViewReligion = (CardView) view.findViewById(R.id.cardViewReligion);
-        cardViewAnimalHandling = (CardView) view.findViewById(R.id.cardViewAnimalHandling);
-        cardViewInsight = (CardView) view.findViewById(R.id.cardViewInsight);
-        cardViewMedicine = (CardView) view.findViewById(R.id.cardViewMedicine);
-        cardViewPerception = (CardView) view.findViewById(R.id.cardViewPerception);
-        cardViewSurvival = (CardView) view.findViewById(R.id.cardViewSurvival);
-        cardViewDeception = (CardView) view.findViewById(R.id.cardViewDeception);
-        cardViewIntimidation = (CardView) view.findViewById(R.id.cardViewIntimidation);
-        cardViewPerformance = (CardView) view.findViewById(R.id.cardViewPerformance);
-        cardViewPersuasion = (CardView) view.findViewById(R.id.cardViewPersuasion);
+
 
         cardViewAcrobatics.setOnClickListener(new View.OnClickListener() {
             @Override

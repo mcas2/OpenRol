@@ -18,18 +18,20 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
 public class SelectCharDnD extends AppCompatActivity{
 
     private FloatingActionButton fabAddCharacter;
-
+    private CardViewAdapter cardViewAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         OpenRol context = (OpenRol) getApplicationContext();
-        Map<String, DnDCharacter> characters = context.getCharacters();
+        context.setSelector(this);
+        List<DnDCharacter> characters = context.getCharacters();
 
         setContentView(R.layout.activity_select_char_dnd);
         RecyclerView dndCharRecyclerView = findViewById(R.id.selectCharDnDRV);
@@ -45,9 +47,8 @@ public class SelectCharDnD extends AppCompatActivity{
         });
 
         // we are initializing our adapter class and passing our arraylist to it.
-        CardViewAdapter cardViewAdapter = null;
         try {
-            cardViewAdapter = new CardViewAdapter(this, new ArrayList<DnDCharacter>(characters.values()));
+            cardViewAdapter = new CardViewAdapter(this, (ArrayList<DnDCharacter>) characters);
         } catch (IOException | ClassNotFoundException e) {
             Log.e("", Log.getStackTraceString(e));
         }
@@ -60,5 +61,9 @@ public class SelectCharDnD extends AppCompatActivity{
         dndCharRecyclerView.setLayoutManager(linearLayoutManager);
         dndCharRecyclerView.setAdapter(cardViewAdapter);
 
+    }
+
+    public void informNewCharacter() {
+        cardViewAdapter.notifyDataSetChanged();
     }
 }
