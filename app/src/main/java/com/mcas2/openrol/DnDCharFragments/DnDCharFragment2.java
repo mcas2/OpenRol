@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.Checkable;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +26,8 @@ import java.util.Random;
 
 public class DnDCharFragment2 extends Fragment {
     private Map<String, CardView> cardViewHashMap = new HashMap<>();
+    private Map<String, EditText> abilities = new HashMap<>();
+    private Map<String, CheckBox> competences = new HashMap<>();
 
     AlertDialog.Builder builder;
     Random r;
@@ -60,7 +66,79 @@ public class DnDCharFragment2 extends Fragment {
         cardViewHashMap.put("performance", view.findViewById(R.id.cardViewPerformance));
         cardViewHashMap.put("persuasion", view.findViewById(R.id.cardViewPersuasion));
 
+        abilities.put("athletics", view.findViewById(R.id.dndCHeditTextAthletics));
+        abilities.put("acrobatics", view.findViewById(R.id.dndCHeditTextAcrobatics));
+        abilities.put("sleightOfHand", view.findViewById(R.id.dndCHeditTextSleightOfHands));
+        abilities.put("stealth", view.findViewById(R.id.dndCHeditTextStealth));
+        abilities.put("arcana", view.findViewById(R.id.dndCHeditTextArcana));
+        abilities.put("history", view.findViewById(R.id.dndCHeditTextHistory));
+        abilities.put("investigation", view.findViewById(R.id.dndCHeditTextInvestigation));
+        abilities.put("nature", view.findViewById(R.id.dndCHeditTextNature));
+        abilities.put("religion", view.findViewById(R.id.dndCHeditTextReligion));
+        abilities.put("animalHandling", view.findViewById(R.id.dndCHeditTextAnimalHandling));
+        abilities.put("insight", view.findViewById(R.id.dndCHeditTextInsight));
+        abilities.put("medicine", view.findViewById(R.id.dndCHeditTextMedicine));
+        abilities.put("perception", view.findViewById(R.id.dndCHeditTextPerception));
+        abilities.put("survival", view.findViewById(R.id.dndCHeditTextSurvival));
+        abilities.put("deception", view.findViewById(R.id.dndCHeditTextDeception));
+        abilities.put("intimidation", view.findViewById(R.id.dndCHeditTextIntimidation));
+        abilities.put("performance", view.findViewById(R.id.dndCHeditTextPerformance));
+        abilities.put("persuasion", view.findViewById(R.id.dndCHeditTextPersuasion));
 
+        competences.put("athletics", view.findViewById(R.id.dndCheckBoxAthletics));
+        competences.put("acrobatics", view.findViewById(R.id.dndCheckBoxAcrobatics));
+        competences.put("sleightOfHand", view.findViewById(R.id.dndCheckBoxSleightOfHands));
+        competences.put("stealth", view.findViewById(R.id.dndCheckBoxStealth));
+        competences.put("arcana", view.findViewById(R.id.dndCheckBoxArcana));
+        competences.put("history", view.findViewById(R.id.dndCheckBoxHistory));
+        competences.put("investigation", view.findViewById(R.id.dndCheckBoxInvestigation));
+        competences.put("nature", view.findViewById(R.id.dndCheckBoxNature));
+        competences.put("religion", view.findViewById(R.id.dndCheckBoxReligion));
+        competences.put("animalHandling", view.findViewById(R.id.dndCheckBoxAnimalHandling));
+        competences.put("insight", view.findViewById(R.id.dndCheckBoxInsight));
+        competences.put("medicine", view.findViewById(R.id.dndCheckBoxMedicine));
+        competences.put("perception", view.findViewById(R.id.dndCheckBoxPerception));
+        competences.put("survival", view.findViewById(R.id.dndCheckBoxSurvival));
+        competences.put("deception", view.findViewById(R.id.dndCheckBoxDeception));
+        competences.put("intimidation", view.findViewById(R.id.dndCheckBoxIntimidation));
+        competences.put("performance", view.findViewById(R.id.dndCheckBoxPerformance));
+        competences.put("persuasion", view.findViewById(R.id.dndCheckBoxPersuasion));
+
+        for (String key : abilities.keySet()) {
+            abilities.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+                        String numAbilityText = String.valueOf(abilities.get(key).getText());
+                        Integer numAbility = Integer.parseInt(numAbilityText);
+                        character.setAttribute(key, numAbility);
+                    }
+                }
+            });
+        }
+
+        for (String key : abilities.keySet()) {
+            abilities.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+                        String numAbilityText = String.valueOf(abilities.get(key).getText());
+                        Integer numAbility = Integer.parseInt(numAbilityText);
+                        character.setAttribute(key, numAbility);
+                    }
+                }
+            });
+        }
+
+        //PARA TIRAR
+        for (String key : cardViewHashMap.keySet()) {
+            competences.get(key).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
 
         cardViewAcrobatics.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,10 +150,9 @@ public class DnDCharFragment2 extends Fragment {
         return view;
     }
 
-   // public String roll20Dice (int bonificador, int competente){
-   //     int result = r.nextInt(20)+1;
-//
-   //     return result;
-   // }
+   public String roll20Dice (int bonificador, int competente){
+       int result = r.nextInt(20)+1;
+       return String.valueOf(result);
+   }
 
 }

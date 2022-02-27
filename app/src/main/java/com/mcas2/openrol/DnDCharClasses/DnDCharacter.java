@@ -9,6 +9,7 @@ import java.util.Map;
 public class DnDCharacter implements Serializable {
     private Map<String, Integer> attributes;
     private Map<String, String> miscAttributes;
+    private Map<String, Boolean> competences;
     private String name;
     private int level;
 
@@ -19,9 +20,10 @@ public class DnDCharacter implements Serializable {
         this.miscAttributes = new HashMap<>();
     }
 
-    public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes) {
+    public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences) {
         this.attributes = attributes;
         this.miscAttributes = miscAttributes;
+        this.competences = competences;
         this.name = name;
         this.level = level;
     }
@@ -32,6 +34,14 @@ public class DnDCharacter implements Serializable {
 
     public void setAttribute(String nameAttribute, Integer newValue) {
         this.attributes.put(nameAttribute, newValue);
+    }
+
+    public Boolean getCompetences(String nameCompetence) {
+        return competences.get(nameCompetence);
+    }
+
+    public void setCompetences(String nameCompetence, Boolean competence) {
+        this.competences.put(nameCompetence, competence);
     }
 
     public String getCharAttribute(String nameCharAttribute){

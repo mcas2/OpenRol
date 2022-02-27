@@ -24,7 +24,7 @@ public class DnDCharFragment1 extends Fragment {
     public EditText name;
     private Map<String, EditText> editTextsCaracteristicas = new HashMap<>();
     //private Map<String, EditText> editText = new HashMap<>();
-    private Map<String, TextView> textViews = new HashMap<>();
+    private Map<String, TextView> textViewsCaracteristicas = new HashMap<>();
 
     private DnDCharacter character;
 
@@ -68,16 +68,16 @@ public class DnDCharFragment1 extends Fragment {
         editTextsCaracteristicas.put("wisdom", view.findViewById(R.id.dndCHeditTextWisdom));
         editTextsCaracteristicas.put("charisma", view.findViewById(R.id.dndCHeditTextCharisma));
 
-        textViews.put("strength", view.findViewById(R.id.dndCSModStrength));
-        textViews.put("dexterity", view.findViewById(R.id.dndCSModDexterity));
-        textViews.put("constitution", view.findViewById(R.id.dndCSModConstitution));
-        textViews.put("intelligence", view.findViewById(R.id.dndCSModIntelligence));
-        textViews.put("wisdom", view.findViewById(R.id.dndCSModWisdom));
-        textViews.put("charisma", view.findViewById(R.id.dndCSModCharisma));
+        textViewsCaracteristicas.put("strength", view.findViewById(R.id.dndCSModStrength));
+        textViewsCaracteristicas.put("dexterity", view.findViewById(R.id.dndCSModDexterity));
+        textViewsCaracteristicas.put("constitution", view.findViewById(R.id.dndCSModConstitution));
+        textViewsCaracteristicas.put("intelligence", view.findViewById(R.id.dndCSModIntelligence));
+        textViewsCaracteristicas.put("wisdom", view.findViewById(R.id.dndCSModWisdom));
+        textViewsCaracteristicas.put("charisma", view.findViewById(R.id.dndCSModCharisma));
 
-        for (String key: textViews.keySet())  {
+        for (String key: textViewsCaracteristicas.keySet())  {
             if (character.getAttribute(key) != null) {
-                textViews.get(key).setText(character.getAttribute(key));
+                textViewsCaracteristicas.get(key).setText(character.getAttribute(key));
             }
         }
 
@@ -89,7 +89,7 @@ public class DnDCharFragment1 extends Fragment {
                         String numAbilityText = String.valueOf(editTextsCaracteristicas.get(key).getText());
                         Integer numAbility = Integer.parseInt(numAbilityText);
                         Integer modificador = assignAbilityScore(numAbility);
-                        textViews.get(key).setText(String.valueOf(modificador));
+                        textViewsCaracteristicas.get(key).setText(String.valueOf(modificador));
                         // clave
                         character.setAttribute(key, numAbility);
                     }
