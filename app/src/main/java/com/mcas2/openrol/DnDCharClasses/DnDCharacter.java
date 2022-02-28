@@ -1,5 +1,6 @@
 package com.mcas2.openrol.DnDCharClasses;
 
+import android.graphics.Bitmap;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -16,6 +17,8 @@ public class DnDCharacter implements Serializable {
     private Map<String, Boolean> competences;
     private String name;
     private int level;
+    private Bitmap image;
+
 
     private List<DnDWeapon> dndWeapons = new ArrayList<>();
 
@@ -25,12 +28,13 @@ public class DnDCharacter implements Serializable {
         this.competences = new HashMap<>();
     }
 
-    public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences) {
+    public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences, Bitmap image) {
         this.name = name;
         this.level = level;
         this.attributes = attributes;
         this.miscAttributes = miscAttributes;
         this.competences = competences;
+        this.image = image;
     }
 
     public Integer getAttribute(String nameAttribute){
@@ -71,5 +75,13 @@ public class DnDCharacter implements Serializable {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 }

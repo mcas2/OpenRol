@@ -24,6 +24,7 @@ import java.util.Objects;
 
 public class DnDCharFragment1 extends Fragment {
     public EditText name;
+    public EditText level;
     private Map<String, EditText> editTextsCaracteristicas = new HashMap<>();
     private Map<String, EditText> editTextsAtributos = new HashMap<>();
     //private Map<String, EditText> editText = new HashMap<>();
@@ -61,6 +62,17 @@ public class DnDCharFragment1 extends Fragment {
             }
         });
 
+        level = view.findViewById(R.id.dndCHeditTextLevel);
+        level.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    Integer numLevel = Integer.parseInt(level.getText().toString());
+                    character.setLevel(numLevel);
+                }
+            }
+        });
+
         //Lo que ya estaba
         raceSpinner.setAdapter(raceAdapter);
 
@@ -92,12 +104,31 @@ public class DnDCharFragment1 extends Fragment {
             }
         }
 
+        for (String key : editTextsAtributos.keySet()) {
+            editTextsAtributos.get(key).setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (event.getAction() == event.ACTION_UP) {
+                        String numAbilityText = String.valueOf(editTextsAtributos.get(key).getText());
+                        Integer numAbility = Integer.parseInt(numAbilityText);
+
+                        character.setAttribute(key, numAbility);
+                    }
+                    return false;
+                }
+            });
+
+        }
+
         for (String key : editTextsCaracteristicas.keySet()) {
             editTextsCaracteristicas.get(key).setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
                     if (event.getAction() == event.ACTION_UP) {
                         String numAbilityText = String.valueOf(Objects.requireNonNull(editTextsCaracteristicas.get(key)).getText());
+                        if (numAbilityText.equals("")) {
+                            numAbilityText = "0";
+                        }
                         Integer numAbility = Integer.parseInt(numAbilityText);
                         Integer modificador = assignAbilityScore(numAbility);
                         textViewsCaracteristicas.get(key).setText(String.valueOf(modificador));
@@ -110,21 +141,21 @@ public class DnDCharFragment1 extends Fragment {
 
 
 
-            for (String key : editTextsAtributos.keySet()) {
-                editTextsAtributos.get(key).setOnKeyListener(new View.OnKeyListener() {
-                    @Override
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        if (event.getAction() == event.ACTION_UP) {
-                            String numAbilityText = String.valueOf(editTextsAtributos.get(key).getText());
-                            Integer numAbility = Integer.parseInt(numAbilityText);
+        for (String key : editTextsAtributos.keySet()) {
+            editTextsAtributos.get(key).setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (event.getAction() == event.ACTION_UP) {
+                        String numAbilityText = String.valueOf(editTextsAtributos.get(key).getText());
+                        Integer numAbility = Integer.parseInt(numAbilityText);
 
-                            character.setAttribute(key, numAbility);
-                        }
-                        return false;
+                        character.setAttribute(key, numAbility);
                     }
-                });
+                    return false;
+                }
+            });
 
-            }
+        }
 
         return view;
     }

@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_dnd_4.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/fragment_dnd_5.xml" value="0.35520833333333335" />
         <entry key="app/src/main/res/layout/fragment_dnd_characters.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/menu/dnd_charsheet_menu.xml" value="0.2791666666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3328125" />
       </map>
     </option>
