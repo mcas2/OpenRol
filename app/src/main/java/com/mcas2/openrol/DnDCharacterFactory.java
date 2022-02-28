@@ -52,51 +52,10 @@ public class DnDCharacterFactory extends AppCompatActivity {
     private static final int CODIGO_PERMISOS_CAMARA = 1;
     private ActivityResultLauncher<Intent> myARL;
 
-
-
-    private DnDCharFragment1 frag1;
-    private DnDCharFragment2 frag2;
-    private DnDCharFragment3 frag3;
-    private DnDCharFragment4 frag4;
-    private DnDCharFragment5 frag5;
     private ActivityDndCharactersBinding binding;
     private ArrayList<DnDCharacter> characters = new ArrayList<>();
     private ArrayList<DnDWeapon> weapons = new ArrayList<>();
 
-    private EditText level;
-    private EditText armorClass;
-    private EditText competencia;
-    private EditText initiative;
-    private EditText speed;
-    private EditText pgm;
-    private EditText pga;
-    private EditText pgt;
-    private EditText dg;
-    private EditText strength;
-    private EditText dexterity;
-    private EditText constitution;
-    private EditText intelligence;
-    private EditText wisdom;
-    private EditText charisma;
-    private EditText athletics;
-    private EditText acrobatics;
-    private EditText sleightOfHands;
-    private EditText stealth;
-    private EditText arcana;
-    private EditText history;
-    private EditText investigation;
-    private EditText nature;
-    private EditText religion;
-    private EditText animalHandling;
-    private EditText insight;
-    private EditText medicine;
-    private EditText perception;
-    private EditText survival;
-    private EditText deception;
-    private EditText intimidation;
-    private EditText performance;
-    private EditText persuasion;
-    private EditText lore;
     private Spinner dndRace;
     private Spinner dndClass;
     private Switch inspiration;
@@ -118,45 +77,6 @@ public class DnDCharacterFactory extends AppCompatActivity {
         //STRINGS
         dndRace = findViewById(R.id.raceSpinnerDnD);
         dndClass = (Spinner) findViewById(R.id.classSpinnerDnD);
-        dg = (EditText) findViewById(R.id.dndCHeditTextDG);
-
-        //INTEGER
-        armorClass = findViewById(R.id.dndCHeditTextArmorClass);
-        competencia = findViewById(R.id.dndCHeditTextCompetencia);
-        level = findViewById(R.id.dndCHeditTextLevel);
-        speed = findViewById(R.id.dndCHeditTextSpeed);
-        pgm = findViewById(R.id.dndCHeditTextPGM);
-        pga = findViewById(R.id.dndCHeditTextPGA);
-        pgt = findViewById(R.id.dndCHeditTextPGT);
-
-        //Características
-        strength = (EditText) findViewById(R.id.dndCHeditTextStrength);
-        dexterity = (EditText) findViewById(R.id.dndCHeditTextDexterity);
-        constitution = (EditText) findViewById(R.id.dndCHeditTextConstitution);
-        intelligence = (EditText) findViewById(R.id.dndCHeditTextIntelligence);
-        wisdom = (EditText) findViewById(R.id.dndCHeditTextWisdom);
-        charisma = (EditText) findViewById(R.id.dndCHeditTextCharisma);
-
-        //Habilidades
-
-        athletics = (EditText) findViewById(R.id.dndCHeditTextAthletics);
-        acrobatics = (EditText) findViewById(R.id.dndCHeditTextAcrobatics);
-        sleightOfHands = (EditText) findViewById(R.id.dndCHeditTextSleightOfHands);
-        stealth = (EditText) findViewById(R.id.dndCHeditTextStealth);
-        arcana = (EditText) findViewById(R.id.dndCHeditTextArcana);
-        history = (EditText) findViewById(R.id.dndCHeditTextHistory);
-        investigation = (EditText) findViewById(R.id.dndCHeditTextInvestigation);
-        nature = (EditText) findViewById(R.id.dndCHeditTextNature);
-        religion = (EditText) findViewById(R.id.dndCHeditTextReligion);
-        animalHandling = (EditText) findViewById(R.id.dndCHeditTextAnimalHandling);
-        insight = (EditText) findViewById(R.id.dndCHeditTextInsight);
-        medicine = (EditText) findViewById(R.id.dndCHeditTextMedicine);
-        perception = (EditText) findViewById(R.id.dndCHeditTextPerception);
-        survival = (EditText) findViewById(R.id.dndCHeditTextSurvival);
-        deception = (EditText) findViewById(R.id.dndCHeditTextDeception);
-        intimidation = (EditText) findViewById(R.id.dndCHeditTextIntimidation);
-        performance = (EditText) findViewById(R.id.dndCHeditTextPerformance);
-        persuasion = (EditText) findViewById(R.id.dndCHeditTextPersuasion);
 
         //Otros
         inspiration = findViewById(R.id.dndInspirationSwitch);
