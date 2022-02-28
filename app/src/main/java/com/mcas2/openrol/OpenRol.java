@@ -20,6 +20,12 @@ public class OpenRol extends Application {
         add(new DnDCharacter("Zanzagaes", 15, new HashMap<>(), new HashMap<> (), new HashMap<>()));
     }};;
 
+    public OpenRol(){
+        //if()
+    }
+
+    /*Aquí hacer el fichero*/
+
     private SelectCharDnD selector;
     public List<DnDCharacter> getCharacters() {return this.characters;}
 

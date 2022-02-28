@@ -5,6 +5,10 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,5 +86,49 @@ public class DnDCharacter implements Serializable {
 
     public void setImage(Bitmap image) {
         this.image = image;
+    }
+
+    public JSONObject serialize (){
+        JSONObject personaje = new JSONObject();
+        JSONObject atributos = new JSONObject();
+
+        try{
+        personaje.put("name", this.name);
+
+        for (String key : this.attributes.keySet()) {
+            atributos.put(key, this.attributes.get(key));
+        }
+
+        personaje.put("attributes", atributos);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return personaje;
+    }
+
+    public static DnDCharacter deserialize (JSONObject personajeJSON){
+        try {
+            //Individual
+            String name = personajeJSON.getString("name");
+
+            //Map
+            Map attributes = new HashMap<String, Integer>();
+
+            JSONObject attributesJSON = personajeJSON.getJSONObject("attributes");
+            JSONArray keys = attributesJSON.names ();
+
+            for (int i = 0; i < keys.length (); i++) {
+                String key = keys.getString (i); // Here's your key
+                Integer value = attributesJSON.getInt(key); // Here's your value
+                attributes.put(key, value);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        //return new Character(name, attributes, );
     }
 }
