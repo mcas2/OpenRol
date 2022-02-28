@@ -1,6 +1,9 @@
 package com.mcas2.openrol;
 
 import android.app.Application;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.DnDCharClasses.DnDWeapon;
 

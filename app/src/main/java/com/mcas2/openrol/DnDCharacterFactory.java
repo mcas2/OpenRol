@@ -1,18 +1,35 @@
 package com.mcas2.openrol;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.DnDCharClasses.DnDWeapon;
@@ -28,11 +45,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class DnDCharacterFactory extends AppCompatActivity {
 
     private DnDCharacter newCharacter = new DnDCharacter();
+    private static final int CODIGO_PERMISOS_CAMARA = 1;
+    private ActivityResultLauncher<Intent> myARL;
+
+
 
     private DnDCharFragment1 frag1;
     private DnDCharFragment2 frag2;
@@ -84,9 +104,7 @@ public class DnDCharacterFactory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dnd_characters);
 
-        //LA MOVIDA TIENE QUE VER CON ESTO
         binding = ActivityDndCharactersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -104,12 +122,12 @@ public class DnDCharacterFactory extends AppCompatActivity {
 
         //INTEGER
         armorClass = findViewById(R.id.dndCHeditTextArmorClass);
-        competencia =  findViewById(R.id.dndCHeditTextCompetencia);
+        competencia = findViewById(R.id.dndCHeditTextCompetencia);
         level = findViewById(R.id.dndCHeditTextLevel);
-        speed =  findViewById(R.id.dndCHeditTextSpeed);
-        pgm =  findViewById(R.id.dndCHeditTextPGM);
-        pga =  findViewById(R.id.dndCHeditTextPGA);
-        pgt =  findViewById(R.id.dndCHeditTextPGT);
+        speed = findViewById(R.id.dndCHeditTextSpeed);
+        pgm = findViewById(R.id.dndCHeditTextPGM);
+        pga = findViewById(R.id.dndCHeditTextPGA);
+        pgt = findViewById(R.id.dndCHeditTextPGT);
 
         //Características
         strength = (EditText) findViewById(R.id.dndCHeditTextStrength);
@@ -150,57 +168,69 @@ public class DnDCharacterFactory extends AppCompatActivity {
             public void onClick(View view) {
                 OpenRol context = (OpenRol) getApplicationContext();
                 context.addCharacter(newCharacter);
-                Toast toast = Toast.makeText(getApplicationContext(), newCharacter.getName()+" entró en los archivos.", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), newCharacter.getName() + " entró en los archivos.", Toast.LENGTH_SHORT);
                 toast.show();
-            }});
+            }
+        });
+
+        myARL = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                            Bundle bundle = result.getData().getExtras();
+                            Bitmap imagen = (Bitmap) bundle.get("data");
+                            newCharacter.setImage(imagen);
+                        }
+                    }
+                });
+    }
+
+    //Cámara
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dnd_charsheet_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.camera) {
+            takePhoto();
         }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void takePhoto() {
+        int checkPermissions = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (checkPermissions == PackageManager.PERMISSION_GRANTED){
+            implicitCameraIntent();
+        } else { //Si no se ha hecho, solicito los permisos.
+            Log.i("Mensaje:", "No se tiene acceso a la cámara");
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, CODIGO_PERMISOS_CAMARA);
+        }
+    }
+
+    public void implicitCameraIntent(){
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (intent.resolveActivity(getPackageManager())!=null) myARL.launch(intent);
+        else Log.i("Mensaje:", "Error con la cámara");
+    }
+
+
 
     public String getData(EditText et){
         return et.getText().toString();
     }
 
-//Integer.parseInt(level.getText().toString()),
-    //dndRace.getSelectedItem().toString(),
-    //dndClass.getSelectedItem().toString(),
-    //Integer.parseInt(armorClass.getText().toString()),
-    //Integer.parseInt(competencia.getText().toString()),
-    //Integer.parseInt(initiative.getText().toString()),
-    //Integer.parseInt(speed.getText().toString()),
-    //Integer.parseInt(pgm.getText().toString()),
-    //Integer.parseInt(pga.getText().toString()),
-    //Integer.parseInt(pgt.getText().toString()),
-    //dg.getText().toString(),
-    //Integer.parseInt(strength.getText().toString()),
-    //Integer.parseInt(dexterity.getText().toString()),
-    //Integer.parseInt(constitution.getText().toString()),
-    //Integer.parseInt(intelligence.getText().toString()),
-    //Integer.parseInt(wisdom.getText().toString()),
-    //Integer.parseInt(charisma.getText().toString()),
-    //Integer.parseInt(athletics.getText().toString()),
-    //Integer.parseInt(acrobatics.getText().toString()),
-    //Integer.parseInt(sleightOfHands.getText().toString()),
-    //Integer.parseInt(stealth.getText().toString()),
-    //Integer.parseInt(arcana.getText().toString()),
-    //Integer.parseInt(history.getText().toString()),
-    //Integer.parseInt(investigation.getText().toString()),
-    //Integer.parseInt(nature.getText().toString()),
-    //Integer.parseInt(religion.getText().toString()),
-    //Integer.parseInt(animalHandling.getText().toString()),
-    //Integer.parseInt(insight.getText().toString()),
-    //Integer.parseInt(medicine.getText().toString()),
-    //Integer.parseInt(perception.getText().toString()),
-    //Integer.parseInt(survival.getText().toString()),
-    //Integer.parseInt(deception.getText().toString()),
-    //Integer.parseInt(intimidation.getText().toString()),
-    //Integer.parseInt(performance.getText().toString()),
-    //Integer.parseInt(persuasion.getText().toString()),
-    //inspiration.isChecked(),
-    //magic.getText().toString(),
-    //lore.getText().toString(),
-    //weapons
 
 
-        //Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
+
+    //Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
     public void saveCharacter(ArrayList<DnDCharacter> characters){
         try {
             File filename = new File(getFilesDir(),"/"+ "dnd_characters.dat");

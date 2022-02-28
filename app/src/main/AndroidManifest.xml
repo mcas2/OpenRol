@@ -31,8 +31,7 @@
         <activity
             android:name=".DnDCharacterFactory"
             android:exported="false"
-            android:label="@string/title_activity_dn_dcharacters"
-            android:theme="@style/Theme.OpenRol.NoActionBar"
+            android:theme="@style/Theme.OpenRol"
             android:windowSoftInputMode="adjustResize"
             />
         <activity

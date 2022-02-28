@@ -28,13 +28,12 @@ public class DnDCharacter implements Serializable {
         this.competences = new HashMap<>();
     }
 
-    public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences, Bitmap image) {
+    public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences) {
         this.name = name;
         this.level = level;
         this.attributes = attributes;
         this.miscAttributes = miscAttributes;
         this.competences = competences;
-        this.image = image;
     }
 
     public Integer getAttribute(String nameAttribute){

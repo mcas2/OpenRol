@@ -40,6 +40,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
             DnDCharacter model = characterList.get(position);
             holder.cardViewDnDCharName.setText(model.getName());
             holder.cardViewDnDCharLevel.setText(String.valueOf(model.getLevel()));
+            holder.cardViewDnDCharImage.setImageBitmap(model.getImage());
             }
 
     @Override
