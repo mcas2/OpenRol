@@ -1,6 +1,7 @@
 package com.mcas2.openrol.DnDCharFragments;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.mcas2.openrol.R;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class DnDCharFragment1 extends Fragment {
     public EditText name;
@@ -36,7 +38,7 @@ public class DnDCharFragment1 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_dnd_1, container, false);
+        View view = inflater.inflate(R.layout.fragment_dnd_1, container, false);
 
         Spinner classSpinner = (Spinner) view.findViewById(R.id.classSpinnerDnD);
         ArrayAdapter<CharSequence> classAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.dndClasses, R.layout.support_simple_spinner_dropdown_item);
@@ -84,78 +86,84 @@ public class DnDCharFragment1 extends Fragment {
         textViewsCaracteristicas.put("wisdom", view.findViewById(R.id.dndCSModWisdom));
         textViewsCaracteristicas.put("charisma", view.findViewById(R.id.dndCSModCharisma));
 
-        for (String key: textViewsCaracteristicas.keySet())  {
+        for (String key : textViewsCaracteristicas.keySet()) {
             if (character.getAttribute(key) != 0) {
                 textViewsCaracteristicas.get(key).setText(character.getAttribute(key));
             }
         }
 
         for (String key : editTextsCaracteristicas.keySet()) {
-            editTextsCaracteristicas.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            editTextsCaracteristicas.get(key).setOnKeyListener(new View.OnKeyListener() {
                 @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) {
-                        String numAbilityText = String.valueOf(editTextsCaracteristicas.get(key).getText());
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (event.getAction() == event.ACTION_UP) {
+                        String numAbilityText = String.valueOf(Objects.requireNonNull(editTextsCaracteristicas.get(key)).getText());
                         Integer numAbility = Integer.parseInt(numAbilityText);
                         Integer modificador = assignAbilityScore(numAbility);
                         textViewsCaracteristicas.get(key).setText(String.valueOf(modificador));
-                        // clave
                         character.setAttribute(key, numAbility);
                     }
+                    return false;
                 }
             });
         }
 
-        for (String key : editTextsAtributos.keySet()) {
-            editTextsAtributos.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) {
-                        String numAbilityText = String.valueOf(editTextsAtributos.get(key).getText());
-                        Integer numAbility = Integer.parseInt(numAbilityText);
 
-                        character.setAttribute(key, numAbility);
+
+            for (String key : editTextsAtributos.keySet()) {
+                editTextsAtributos.get(key).setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (event.getAction() == event.ACTION_UP) {
+                            String numAbilityText = String.valueOf(editTextsAtributos.get(key).getText());
+                            Integer numAbility = Integer.parseInt(numAbilityText);
+
+                            character.setAttribute(key, numAbility);
+                        }
+                        return false;
                     }
-                }
-            });
-        }
+                });
+
+            }
 
         return view;
     }
 
 
 
-    public Integer assignAbilityScore (Integer numAbility){
-        switch (numAbility){
-            case (3):
-                return -4;
-            case (4):
-            case (5):
-                return -3;
-            case (6):
-            case (7):
-                return -2;
-            case (8):
-            case (9):
-                return -1;
-            case (10):
-            case (11):
-                return 0;
-            case (12):
-            case (13):
-                return 1;
-            case (14):
-            case (15):
-                return 2;
-            case (16):
-            case (17):
-                return 3;
-            case (18):
-                return 4;
-            default:
-                Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Introduce un número entre 3 y 18", Toast.LENGTH_SHORT);
-                toast.show();
-                return 0;
+
+        public Integer assignAbilityScore (Integer numAbility){
+            switch (numAbility) {
+                case (3):
+                    return -4;
+                case (4):
+                case (5):
+                    return -3;
+                case (6):
+                case (7):
+                    return -2;
+                case (8):
+                case (9):
+                    return -1;
+                case (10):
+                case (11):
+                    return 0;
+                case (12):
+                case (13):
+                    return 1;
+                case (14):
+                case (15):
+                    return 2;
+                case (16):
+                case (17):
+                    return 3;
+                case (18):
+                    return 4;
+                default:
+                    Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Introduce un número entre 3 y 18", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return 0;
         }
     }
 }
+

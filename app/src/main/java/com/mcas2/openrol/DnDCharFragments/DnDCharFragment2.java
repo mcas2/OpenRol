@@ -110,14 +110,16 @@ public class DnDCharFragment2 extends Fragment {
             abilities.get(key).setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    String numAbilityText = String.valueOf(abilities.get(key).getText());
-                    Integer numAbility;
-                    if (numAbilityText.equals("")){
-                        numAbility = 0;
-                    } else {
-                        numAbility = Integer.valueOf(numAbilityText);
+                    if (event.getAction() == event.ACTION_UP) {
+                        String numAbilityText = String.valueOf(abilities.get(key).getText());
+                        Integer numAbility;
+                        if (numAbilityText.equals("")) {
+                            numAbility = 0;
+                        } else {
+                            numAbility = Integer.valueOf(numAbilityText);
+                        }
+                        character.setAttribute(key, numAbility);
                     }
-                    character.setAttribute(key, numAbility);
                     return false;
                 }
             });
