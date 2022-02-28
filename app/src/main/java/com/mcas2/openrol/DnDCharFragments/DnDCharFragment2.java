@@ -2,6 +2,7 @@ package com.mcas2.openrol.DnDCharFragments;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,24 +107,23 @@ public class DnDCharFragment2 extends Fragment {
 
         //Para guardar los cambios de las habilidades
         for (String key : abilities.keySet()) {
-            abilities.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            abilities.get(key).setOnKeyListener(new View.OnKeyListener() {
                 @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) {
-                        String numAbilityText = String.valueOf(abilities.get(key).getText());
-                        Integer numAbility;
-                        if (numAbilityText.equals("")){
-                            numAbility = 0;
-                        } else {
-                            numAbility = Integer.valueOf(numAbilityText);
-                        }
-                        character.setAttribute(key, numAbility);
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    String numAbilityText = String.valueOf(abilities.get(key).getText());
+                    Integer numAbility;
+                    if (numAbilityText.equals("")){
+                        numAbility = 0;
+                    } else {
+                        numAbility = Integer.valueOf(numAbilityText);
                     }
+                    character.setAttribute(key, numAbility);
+                    return false;
                 }
             });
         }
 
-        for (String key : competences.keySet()) {
+            for (String key : competences.keySet()) {
             competences.get(key).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

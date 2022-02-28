@@ -23,6 +23,7 @@ import java.util.Map;
 public class DnDCharFragment1 extends Fragment {
     public EditText name;
     private Map<String, EditText> editTextsCaracteristicas = new HashMap<>();
+    private Map<String, EditText> editTextsAtributos = new HashMap<>();
     //private Map<String, EditText> editText = new HashMap<>();
     private Map<String, TextView> textViewsCaracteristicas = new HashMap<>();
 
@@ -67,13 +68,14 @@ public class DnDCharFragment1 extends Fragment {
         editTextsCaracteristicas.put("intelligence", view.findViewById(R.id.dndCHeditTextIntelligence));
         editTextsCaracteristicas.put("wisdom", view.findViewById(R.id.dndCHeditTextWisdom));
         editTextsCaracteristicas.put("charisma", view.findViewById(R.id.dndCHeditTextCharisma));
-        editTextsCaracteristicas.put("armorClass", view.findViewById(R.id.dndCHeditTextArmorClass));
-        editTextsCaracteristicas.put("competencia", view.findViewById(R.id.dndCHeditTextCompetencia));
-        editTextsCaracteristicas.put("level", view.findViewById(R.id.dndCHeditTextLevel));
-        editTextsCaracteristicas.put("speed", view.findViewById(R.id.dndCHeditTextSpeed));
-        editTextsCaracteristicas.put("pgm", view.findViewById(R.id.dndCHeditTextPGM));
-        editTextsCaracteristicas.put("pga", view.findViewById(R.id.dndCHeditTextPGA));
-        editTextsCaracteristicas.put("pgt", view.findViewById(R.id.dndCHeditTextPGT));
+
+        editTextsAtributos.put("armorClass", view.findViewById(R.id.dndCHeditTextArmorClass));
+        editTextsAtributos.put("competencia", view.findViewById(R.id.dndCHeditTextCompetencia));
+        editTextsAtributos.put("level", view.findViewById(R.id.dndCHeditTextLevel));
+        editTextsAtributos.put("speed", view.findViewById(R.id.dndCHeditTextSpeed));
+        editTextsAtributos.put("pgm", view.findViewById(R.id.dndCHeditTextPGM));
+        editTextsAtributos.put("pga", view.findViewById(R.id.dndCHeditTextPGA));
+        editTextsAtributos.put("pgt", view.findViewById(R.id.dndCHeditTextPGT));
 
         textViewsCaracteristicas.put("strength", view.findViewById(R.id.dndCSModStrength));
         textViewsCaracteristicas.put("dexterity", view.findViewById(R.id.dndCSModDexterity));
@@ -98,6 +100,20 @@ public class DnDCharFragment1 extends Fragment {
                         Integer modificador = assignAbilityScore(numAbility);
                         textViewsCaracteristicas.get(key).setText(String.valueOf(modificador));
                         // clave
+                        character.setAttribute(key, numAbility);
+                    }
+                }
+            });
+        }
+
+        for (String key : editTextsAtributos.keySet()) {
+            editTextsAtributos.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+                        String numAbilityText = String.valueOf(editTextsAtributos.get(key).getText());
+                        Integer numAbility = Integer.parseInt(numAbilityText);
+
                         character.setAttribute(key, numAbility);
                     }
                 }
