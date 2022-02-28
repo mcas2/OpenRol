@@ -1,5 +1,9 @@
 package com.mcas2.openrol.DnDCharClasses;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,18 +22,19 @@ public class DnDCharacter implements Serializable {
     public DnDCharacter() {
         this.attributes = new HashMap<>();
         this.miscAttributes = new HashMap<>();
+        this.competences = new HashMap<>();
     }
 
     public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences) {
+        this.name = name;
+        this.level = level;
         this.attributes = attributes;
         this.miscAttributes = miscAttributes;
         this.competences = competences;
-        this.name = name;
-        this.level = level;
     }
 
     public Integer getAttribute(String nameAttribute){
-        return attributes.get(nameAttribute);
+        return attributes.getOrDefault(nameAttribute, 0);
     }
 
     public void setAttribute(String nameAttribute, Integer newValue) {
@@ -37,7 +42,7 @@ public class DnDCharacter implements Serializable {
     }
 
     public Boolean getCompetences(String nameCompetence) {
-        return competences.get(nameCompetence);
+        return competences.getOrDefault(nameCompetence, false);
     }
 
     public void setCompetences(String nameCompetence, Boolean competence) {

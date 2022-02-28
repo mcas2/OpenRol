@@ -97,18 +97,19 @@ public class DnDCharacterFactory extends AppCompatActivity {
         tabs.setupWithViewPager(viewPager);
 
         //Básicos
-        //He hecho esta prueba pero no sale nada
-        level = findViewById(R.id.dndCHeditTextLevel);
+        //STRINGS
         dndRace = findViewById(R.id.raceSpinnerDnD);
         dndClass = (Spinner) findViewById(R.id.classSpinnerDnD);
-        armorClass = (EditText) findViewById(R.id.dndCHeditTextArmorClass);
-        competencia = (EditText) findViewById(R.id.dndCHeditTextCompetencia);
-        initiative = (EditText) findViewById(R.id.dndCHeditTextInitiative);
-        speed = (EditText) findViewById(R.id.dndCHeditTextSpeed);
-        pgm = (EditText) findViewById(R.id.dndCHeditTextPGM);
-        pga = (EditText) findViewById(R.id.dndCHeditTextPGA);
-        pgt = (EditText) findViewById(R.id.dndCHeditTextPGT);
         dg = (EditText) findViewById(R.id.dndCHeditTextDG);
+
+        //INTEGER
+        armorClass = findViewById(R.id.dndCHeditTextArmorClass);
+        competencia =  findViewById(R.id.dndCHeditTextCompetencia);
+        level = findViewById(R.id.dndCHeditTextLevel);
+        speed =  findViewById(R.id.dndCHeditTextSpeed);
+        pgm =  findViewById(R.id.dndCHeditTextPGM);
+        pga =  findViewById(R.id.dndCHeditTextPGA);
+        pgt =  findViewById(R.id.dndCHeditTextPGT);
 
         //Características
         strength = (EditText) findViewById(R.id.dndCHeditTextStrength);

@@ -13,8 +13,8 @@ import java.util.Map;
 public class OpenRol extends Application {
     // Nombre personaje --> Personaje
     List<DnDCharacter> characters = new ArrayList<DnDCharacter>() {{
-        add(new DnDCharacter("Maedhros", 10, new HashMap<>(), new HashMap<> ()));
-        add(new DnDCharacter("Zanzagaes", 10, new HashMap<>(), new HashMap<> ()));
+        add(new DnDCharacter("Maedhros", 10, new HashMap<>(), new HashMap<> (), new HashMap<>()));
+        add(new DnDCharacter("Zanzagaes", 15, new HashMap<>(), new HashMap<> (), new HashMap<>()));
     }};;
 
     private SelectCharDnD selector;

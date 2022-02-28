@@ -67,6 +67,13 @@ public class DnDCharFragment1 extends Fragment {
         editTextsCaracteristicas.put("intelligence", view.findViewById(R.id.dndCHeditTextIntelligence));
         editTextsCaracteristicas.put("wisdom", view.findViewById(R.id.dndCHeditTextWisdom));
         editTextsCaracteristicas.put("charisma", view.findViewById(R.id.dndCHeditTextCharisma));
+        editTextsCaracteristicas.put("armorClass", view.findViewById(R.id.dndCHeditTextArmorClass));
+        editTextsCaracteristicas.put("competencia", view.findViewById(R.id.dndCHeditTextCompetencia));
+        editTextsCaracteristicas.put("level", view.findViewById(R.id.dndCHeditTextLevel));
+        editTextsCaracteristicas.put("speed", view.findViewById(R.id.dndCHeditTextSpeed));
+        editTextsCaracteristicas.put("pgm", view.findViewById(R.id.dndCHeditTextPGM));
+        editTextsCaracteristicas.put("pga", view.findViewById(R.id.dndCHeditTextPGA));
+        editTextsCaracteristicas.put("pgt", view.findViewById(R.id.dndCHeditTextPGT));
 
         textViewsCaracteristicas.put("strength", view.findViewById(R.id.dndCSModStrength));
         textViewsCaracteristicas.put("dexterity", view.findViewById(R.id.dndCSModDexterity));
@@ -76,7 +83,7 @@ public class DnDCharFragment1 extends Fragment {
         textViewsCaracteristicas.put("charisma", view.findViewById(R.id.dndCSModCharisma));
 
         for (String key: textViewsCaracteristicas.keySet())  {
-            if (character.getAttribute(key) != null) {
+            if (character.getAttribute(key) != 0) {
                 textViewsCaracteristicas.get(key).setText(character.getAttribute(key));
             }
         }

@@ -104,55 +104,87 @@ public class DnDCharFragment2 extends Fragment {
         competences.put("performance", view.findViewById(R.id.dndCheckBoxPerformance));
         competences.put("persuasion", view.findViewById(R.id.dndCheckBoxPersuasion));
 
+        //Para guardar los cambios de las habilidades
         for (String key : abilities.keySet()) {
             abilities.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
                         String numAbilityText = String.valueOf(abilities.get(key).getText());
-                        Integer numAbility = Integer.parseInt(numAbilityText);
+                        Integer numAbility;
+                        if (numAbilityText.equals("")){
+                            numAbility = 0;
+                        } else {
+                            numAbility = Integer.valueOf(numAbilityText);
+                        }
                         character.setAttribute(key, numAbility);
                     }
                 }
             });
         }
 
-        for (String key : abilities.keySet()) {
-            abilities.get(key).setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) {
-                        String numAbilityText = String.valueOf(abilities.get(key).getText());
-                        Integer numAbility = Integer.parseInt(numAbilityText);
-                        character.setAttribute(key, numAbility);
-                    }
-                }
-            });
-        }
-
-        //PARA TIRAR
-        for (String key : cardViewHashMap.keySet()) {
+        for (String key : competences.keySet()) {
             competences.get(key).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    character.setCompetences(key, competences.get(key).isChecked());
                 }
             });
         }
 
-        cardViewAcrobatics.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                builder.setMessage("1").show();
-            }
-        });
+        //Para tirar
+        for (String key : cardViewHashMap.keySet()) {
+            cardViewHashMap.get(key).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer habilidad;
+                    if (character.getAttribute(key)==null){
+                        habilidad = 0;
+                    } else
+                        habilidad = character.getAttribute(key);
+
+                    if (character.getCompetences(key)){
+                        Integer competencia = character.getAttribute("competencia");
+                        roll20DiceCompetence(habilidad, competencia);
+                    } else {
+                        roll20Dice(habilidad);
+                    }
+                }
+            });
+        }
+
+
+        //PARA ELIMINAR
+        //cardViewAcrobatics.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        builder.setMessage("1").show();
+        //    }
+        //});
 
         return view;
     }
 
-   public String roll20Dice (int bonificador, int competente){
-       int result = r.nextInt(20)+1;
-       return String.valueOf(result);
+   public void roll20DiceCompetence (Integer habilidad, Integer competente){
+       Integer diceResult = r.nextInt(20)+1;
+       String resultado;
+       if (habilidad!=0) {
+           resultado = diceResult + "+" + habilidad + "+" + competente + " = " + (diceResult + competente + habilidad);
+       } else {
+           resultado = diceResult + "+" + competente + " = " + (diceResult + competente);
+       }
+       builder.setMessage(resultado).show();
    }
+
+   public void roll20Dice (Integer habilidad){
+       Integer diceResult = r.nextInt(20)+1;
+       String resultado;
+       if (habilidad!=0) {
+           resultado = diceResult + "+" + habilidad + " = " + (diceResult + habilidad);
+       } else {
+           resultado = diceResult.toString();
+       }
+       builder.setMessage(resultado).show();
+    }
 
 }
