@@ -108,7 +108,7 @@ public class DnDCharacter implements Serializable {
         return personaje;
     }
 
-    public static DnDCharacter deserialize (JSONObject personajeJSON){
+    /*public static DnDCharacter deserialize (JSONObject personajeJSON){
         try {
             //Individual
             String name = personajeJSON.getString("name");
@@ -128,7 +128,7 @@ public class DnDCharacter implements Serializable {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        return ;
         //return new Character(name, attributes, );
-    }
+    }*/
 }

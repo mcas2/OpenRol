@@ -155,15 +155,6 @@ public class DnDCharFragment2 extends Fragment {
             });
         }
 
-
-        //PARA ELIMINAR
-        //cardViewAcrobatics.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        builder.setMessage("1").show();
-        //    }
-        //});
-
         return view;
     }
 
@@ -175,7 +166,10 @@ public class DnDCharFragment2 extends Fragment {
        } else {
            resultado = diceResult + "+" + competente + " = " + (diceResult + competente);
        }
-       builder.setMessage(resultado).show();
+       View view = getLayoutInflater().inflate(R.layout.alert_dialog_dice, null);
+       TextView tv = view.findViewById(R.id.resultAlertDialog);
+       tv.setText(resultado);
+       builder.setView(view).show();
    }
 
    public void roll20Dice (Integer habilidad){
@@ -186,7 +180,10 @@ public class DnDCharFragment2 extends Fragment {
        } else {
            resultado = diceResult.toString();
        }
-       builder.setMessage(resultado).show();
+       View view = getLayoutInflater().inflate(R.layout.alert_dialog_dice, null);
+       TextView tv = view.findViewById(R.id.resultAlertDialog);
+       tv.setText(resultado);
+       builder.setView(view).show();
     }
 
 }
