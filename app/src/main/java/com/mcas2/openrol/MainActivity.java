@@ -23,4 +23,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, SelectCharSystem.class);
         startActivity(intent);
     }
+
+    public void openResources(View view) {
+       //Intent intent = new Intent(MainActivity.this, SelectCharSystem.class);
+       //startActivity(intent);
+    }
 }

@@ -44,6 +44,8 @@
         <Button
             android:id="@+id/selCharAquelarre"
             android:theme="@style/OtherButtonTheme"
+            android:backgroundTint="@color/gris_nube"
+            android:textColor="@android:color/darker_gray"
             android:textAllCaps="false"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -54,6 +56,8 @@
         <Button
             android:id="@+id/selCharASOIAF"
             android:theme="@style/OtherButtonTheme"
+            android:backgroundTint="@color/gris_nube"
+            android:textColor="@android:color/darker_gray"
             android:textAllCaps="false"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -62,27 +66,5 @@
             android:textSize="20sp" />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Abre una hoja ya existente"
-        android:textColor="@color/white"
-        android:textStyle="italic"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/floatingActionButton"
-        app:layout_constraintEnd_toEndOf="@+id/floatingActionButton"
-        app:layout_constraintStart_toStartOf="@+id/floatingActionButton" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@drawable/ic_open" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

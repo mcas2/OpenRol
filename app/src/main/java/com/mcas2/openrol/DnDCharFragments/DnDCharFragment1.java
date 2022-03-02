@@ -50,25 +50,25 @@ public class DnDCharFragment1 extends Fragment {
 
         //Basicos
         name = view.findViewById(R.id.dndCHeditTextName);
-        name.setOnKeyListener(new View.OnKeyListener() {
+        name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public void onFocusChange(View v, boolean hasFocus) {
                 character.setName(name.getText().toString());
-                return false;
             }
         });
+
         name.setText(character.getName());
 
 
         level = view.findViewById(R.id.dndCHeditTextLevel);
-        level.setOnKeyListener(new View.OnKeyListener() {
+        level.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public void onFocusChange(View v, boolean hasFocus) {
                 Integer numLevel = Integer.parseInt(level.getText().toString());
                 character.setLevel(numLevel);
-                return false;
             }
         });
+
         level.setText(character.getLevel().toString());
 
 
