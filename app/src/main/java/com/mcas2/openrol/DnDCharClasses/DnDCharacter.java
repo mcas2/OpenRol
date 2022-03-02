@@ -20,7 +20,7 @@ public class DnDCharacter implements Serializable {
     private Map<String, String> miscAttributes;
     private Map<String, Boolean> competences;
     private String name;
-    private int level;
+    private Integer level;
     private Bitmap image;
 
 
@@ -32,7 +32,7 @@ public class DnDCharacter implements Serializable {
         this.competences = new HashMap<>();
     }
 
-    public DnDCharacter(String name, int level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences) {
+    public DnDCharacter(String name, Integer level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences) {
         this.name = name;
         this.level = level;
         this.attributes = attributes;
@@ -89,17 +89,39 @@ public class DnDCharacter implements Serializable {
     }
 
     public JSONObject serialize (){
+        //En el primero se guardan los otros
         JSONObject personaje = new JSONObject();
+        //Pertenencen a personaje
         JSONObject atributos = new JSONObject();
+        JSONObject miscAttributes = new JSONObject();
+        JSONObject competencias = new JSONObject();
 
         try{
         personaje.put("name", this.name);
+        personaje.put("level", this.level);
 
+        //Atributos
         for (String key : this.attributes.keySet()) {
             atributos.put(key, this.attributes.get(key));
         }
 
         personaje.put("attributes", atributos);
+
+        //Misc
+        for (String key : this.miscAttributes.keySet()) {
+            miscAttributes.put(key, this.miscAttributes.get(key));
+        }
+
+        personaje.put("miscAttributes", miscAttributes);
+
+        //Competencias
+        for (String key : this.competences.keySet()) {
+            competencias.put(key, this.competences.get(key));
+        }
+
+        personaje.put("competences", competencias);
+
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -112,6 +134,7 @@ public class DnDCharacter implements Serializable {
         try {
             //Individual
             String name = personajeJSON.getString("name");
+            Integer level = Integer.parseInt(personajeJSON.getString("level"));
 
             //Map
             Map attributes = new HashMap<String, Integer>();
@@ -125,10 +148,33 @@ public class DnDCharacter implements Serializable {
                 attributes.put(key, value);
             }
 
+            Map miscAttributes = new HashMap<String, String>();
+
+            JSONObject miscAttributesJSON = personajeJSON.getJSONObject("miscAttributes");
+            JSONArray keysMisc = miscAttributesJSON.names ();
+
+            for (int i = 0; i < keysMisc.length (); i++) {
+                String keyMisc = keysMisc.getString (i); // Here's your key
+                Integer value = miscAttributesJSON.getInt(keyMisc); // Here's your value
+                miscAttributes.put(keyMisc, value);
+            }
+
+            Map competences = new HashMap<String, Boolean>();
+
+            JSONObject competencesJSON = personajeJSON.getJSONObject("competences");
+            JSONArray keysComp = competencesJSON.names ();
+
+            for (int i = 0; i < keysComp.length (); i++) {
+                String keyComp = keysComp.getString (i); // Here's your key
+                Integer value = competencesJSON.getInt(keyComp); // Here's your value
+                competences.put(keyComp, value);
+            }
+
+            return new DnDCharacter(name, level, attributes, miscAttributes, competences);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        //return new Character(name, attributes, );
+        return null;
     }
 }

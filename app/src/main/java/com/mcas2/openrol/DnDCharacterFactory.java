@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -41,10 +42,18 @@ import com.mcas2.openrol.DnDCharFragments.DnDCharFragment5;
 import com.mcas2.openrol.ui.main.SectionsPagerAdapter;
 import com.mcas2.openrol.databinding.ActivityDndCharactersBinding;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+import io.grpc.internal.JsonParser;
 
 public class DnDCharacterFactory extends AppCompatActivity {
 
@@ -53,7 +62,7 @@ public class DnDCharacterFactory extends AppCompatActivity {
     private ActivityResultLauncher<Intent> myARL;
 
     private ActivityDndCharactersBinding binding;
-    private ArrayList<DnDCharacter> characters = new ArrayList<>();
+    //private ArrayList<DnDCharacter> characters = new ArrayList<>();
     private ArrayList<DnDWeapon> weapons = new ArrayList<>();
 
     private Spinner dndRace;
@@ -139,6 +148,28 @@ public class DnDCharacterFactory extends AppCompatActivity {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager())!=null) myARL.launch(intent);
         else Log.i("Mensaje:", "Error con la cámara");
+    }
+
+
+    public void onPause () {
+        OpenRol context = (OpenRol) getApplicationContext();
+
+        try {
+            File file = new File(Environment.getExternalStorageDirectory(), "dnd_characters.json");
+            FileWriter fw = new FileWriter(file);
+            JSONArray ja = new JSONArray();
+
+            for (DnDCharacter character : context.characters){
+                ja.put(character.serialize());
+            }
+
+            fw.write(ja.toString());
+            fw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        super.onPause();
     }
 
 
