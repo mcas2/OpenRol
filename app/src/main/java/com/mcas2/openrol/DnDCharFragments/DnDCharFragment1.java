@@ -61,6 +61,7 @@ public class DnDCharFragment1 extends Fragment {
                 }
             }
         });
+        name.setText(character.getName());
 
         level = view.findViewById(R.id.dndCHeditTextLevel);
         level.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -72,6 +73,7 @@ public class DnDCharFragment1 extends Fragment {
                 }
             }
         });
+        level.setText(character.getLevel().toString());
 
         //Lo que ya estaba
         raceSpinner.setAdapter(raceAdapter);
@@ -85,8 +87,8 @@ public class DnDCharFragment1 extends Fragment {
 
         editTextsAtributos.put("armorClass", view.findViewById(R.id.dndCHeditTextArmorClass));
         editTextsAtributos.put("competencia", view.findViewById(R.id.dndCHeditTextCompetencia));
-        editTextsAtributos.put("level", view.findViewById(R.id.dndCHeditTextLevel));
         editTextsAtributos.put("speed", view.findViewById(R.id.dndCHeditTextSpeed));
+        editTextsAtributos.put("initiative", view.findViewById(R.id.dndCHeditTextInitiative));
         editTextsAtributos.put("pgm", view.findViewById(R.id.dndCHeditTextPGM));
         editTextsAtributos.put("pga", view.findViewById(R.id.dndCHeditTextPGA));
         editTextsAtributos.put("pgt", view.findViewById(R.id.dndCHeditTextPGT));
@@ -100,11 +102,12 @@ public class DnDCharFragment1 extends Fragment {
 
         for (String key : textViewsCaracteristicas.keySet()) {
             if (character.getAttribute(key) != 0) {
-                textViewsCaracteristicas.get(key).setText(character.getAttribute(key));
+                textViewsCaracteristicas.get(key).setText(assignAbilityScore(character.getAttribute(key)).toString());
             }
         }
 
         for (String key : editTextsAtributos.keySet()) {
+            editTextsAtributos.get(key).setText(character.getAttribute(key).toString());
             editTextsAtributos.get(key).setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -121,6 +124,7 @@ public class DnDCharFragment1 extends Fragment {
         }
 
         for (String key : editTextsCaracteristicas.keySet()) {
+            editTextsCaracteristicas.get(key).setText(character.getAttribute(key).toString());
             editTextsCaracteristicas.get(key).setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {

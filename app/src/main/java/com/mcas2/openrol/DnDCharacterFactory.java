@@ -43,12 +43,13 @@ import java.util.ArrayList;
 
 public class DnDCharacterFactory extends AppCompatActivity {
 
-    private DnDCharacter newCharacter = new DnDCharacter();
+    private DnDCharacter newCharacter;
+    private boolean saved;
+
     private static final int CODIGO_PERMISOS_CAMARA = 1;
     private ActivityResultLauncher<Intent> myARL;
 
     private ActivityDndCharactersBinding binding;
-    //private ArrayList<DnDCharacter> characters = new ArrayList<>();
     private ArrayList<DnDWeapon> weapons = new ArrayList<>();
 
     private Spinner dndRace;
@@ -58,6 +59,15 @@ public class DnDCharacterFactory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        OpenRolMain main = (OpenRolMain) getApplicationContext();
+        if (main.inConstruction == null) {
+            newCharacter = new DnDCharacter();
+            saved = false;
+        } else {
+            newCharacter = main.inConstruction;
+            saved = true;
+        }
 
         binding = ActivityDndCharactersBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -82,8 +92,23 @@ public class DnDCharacterFactory extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 OpenRolMain context = (OpenRolMain) getApplicationContext();
-                context.addCharacter(newCharacter);
-                Toast toast = Toast.makeText(getApplicationContext(), newCharacter.getName() + " entró en los archivos.", Toast.LENGTH_SHORT);
+                Toast toast;
+                if (newCharacter.isComplete() && !saved) {
+                    context.addCharacter(newCharacter);
+                    context.informChanges();
+                    toast = Toast.makeText(getApplicationContext(),
+                            newCharacter.getName() + " creado exitosamente.", Toast.LENGTH_SHORT);
+                    saved = true;
+                }
+                else if (newCharacter.isComplete() && saved) {
+                    context.informChanges();
+                    toast = Toast.makeText(getApplicationContext(),
+                            newCharacter.getName() + " actualizado correctamente.", Toast.LENGTH_SHORT);
+                }
+                else {
+                    toast = Toast.makeText(getApplicationContext(),
+                            "El personaje no ha podido crearse. Falta informacion", Toast.LENGTH_SHORT);
+                }
                 toast.show();
             }
         });
@@ -141,7 +166,7 @@ public class DnDCharacterFactory extends AppCompatActivity {
         OpenRolMain context = (OpenRolMain) getApplicationContext();
 
         try {
-            File file = new File(Environment.getExternalStorageDirectory(), "dnd_characters.json");
+            File file = new File(context.getFilesDir(), "dnd_characters2.json");
             FileWriter fw = new FileWriter(file);
             JSONArray ja = new JSONArray();
 

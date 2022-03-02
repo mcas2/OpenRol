@@ -1,6 +1,8 @@
 package com.mcas2.openrol.DnDCharClasses;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mcas2.openrol.DnDCharacterFactory;
+import com.mcas2.openrol.OpenRolMain;
 import com.mcas2.openrol.R;
+import com.mcas2.openrol.SelectCharDnD;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,6 +39,8 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
             return new Viewholder(view);
             }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull CardViewAdapter.Viewholder holder, int position) {
             // to set data to textview and imageview of each card layout
@@ -41,6 +48,17 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
             holder.cardViewDnDCharName.setText(model.getName());
             holder.cardViewDnDCharLevel.setText(String.valueOf(model.getLevel()));
             holder.cardViewDnDCharImage.setImageBitmap(model.getImage());
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    OpenRolMain main = (OpenRolMain) context.getApplicationContext();
+                    main.inConstruction = main.getCharacterByPosition(holder.getAdapterPosition());
+                    Intent intent = new Intent(context, DnDCharacterFactory.class);
+                    context.startActivity(intent);
+
+                }
+            });
             }
 
     @Override

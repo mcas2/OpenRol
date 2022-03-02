@@ -89,13 +89,6 @@ public class Dices extends AppCompatActivity {
                 }
                 result.setText(res+"");
                 resultHistory.setText(history);
-
-                //Toast para críticos y pifias en Aquelarre
-                //if (res<(0.1*(Integer.parseInt(numDados.getText().toString())*numCaras))){
-                //    Toast.makeText(Dices.this, "Crítico", Toast.LENGTH_LONG).show();
-                //} else if (res>((0.9*(Integer.parseInt(numDados.getText().toString())*numCaras)))){
-                //    Toast.makeText(Dices.this, "Pifia", Toast.LENGTH_LONG).show();
-                //}
             }
         });
 

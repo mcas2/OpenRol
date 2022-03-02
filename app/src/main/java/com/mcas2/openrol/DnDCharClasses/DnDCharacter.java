@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -27,12 +28,17 @@ public class DnDCharacter implements Serializable {
     private List<DnDWeapon> dndWeapons = new ArrayList<>();
 
     public DnDCharacter() {
+        this.name = "";
+        this.level = 1;
         this.attributes = new HashMap<>();
         this.miscAttributes = new HashMap<>();
         this.competences = new HashMap<>();
     }
 
     public DnDCharacter(String name, Integer level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences) {
+        if (name == null || level == null)
+            throw new MissingFields();
+
         this.name = name;
         this.level = level;
         this.attributes = attributes;
@@ -97,31 +103,29 @@ public class DnDCharacter implements Serializable {
         JSONObject competencias = new JSONObject();
 
         try{
-        personaje.put("name", this.name);
-        personaje.put("level", this.level);
+            personaje.put("name", this.name);
+            personaje.put("level", this.level);
 
-        //Atributos
-        for (String key : this.attributes.keySet()) {
-            atributos.put(key, this.attributes.get(key));
-        }
+            //Atributos
+            for (String key : this.attributes.keySet()) {
+                atributos.put(key, this.attributes.get(key));
+            }
 
-        personaje.put("attributes", atributos);
+            personaje.put("attributes", atributos);
 
-        //Misc
-        for (String key : this.miscAttributes.keySet()) {
-            miscAttributes.put(key, this.miscAttributes.get(key));
-        }
+            //Misc
+            for (String key : this.miscAttributes.keySet()) {
+                miscAttributes.put(key, this.miscAttributes.get(key));
+            }
 
-        personaje.put("miscAttributes", miscAttributes);
+            personaje.put("miscAttributes", miscAttributes);
 
-        //Competencias
-        for (String key : this.competences.keySet()) {
-            competencias.put(key, this.competences.get(key));
-        }
+            //Competencias
+            for (String key : this.competences.keySet()) {
+                competencias.put(key, this.competences.get(key));
+            }
 
-        personaje.put("competences", competencias);
-
-
+            personaje.put("competences", competencias);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -130,51 +134,42 @@ public class DnDCharacter implements Serializable {
         return personaje;
     }
 
-    public static DnDCharacter deserialize (JSONObject personajeJSON){
-        try {
-            //Individual
-            String name = personajeJSON.getString("name");
-            Integer level = Integer.parseInt(personajeJSON.getString("level"));
+    public static DnDCharacter deserialize (JSONObject personajeJSON) throws JSONException {
+        //Individual
+        String name = personajeJSON.getString("name");
+        Integer level = Integer.parseInt(personajeJSON.getString("level"));
 
-            //Map
-            Map attributes = new HashMap<String, Integer>();
-
-            JSONObject attributesJSON = personajeJSON.getJSONObject("attributes");
-            JSONArray keys = attributesJSON.names ();
-
-            for (int i = 0; i < keys.length (); i++) {
-                String key = keys.getString (i); // Here's your key
-                Integer value = attributesJSON.getInt(key); // Here's your value
-                attributes.put(key, value);
-            }
-
-            Map miscAttributes = new HashMap<String, String>();
-
-            JSONObject miscAttributesJSON = personajeJSON.getJSONObject("miscAttributes");
-            JSONArray keysMisc = miscAttributesJSON.names ();
-
-            for (int i = 0; i < keysMisc.length (); i++) {
-                String keyMisc = keysMisc.getString (i); // Here's your key
-                Integer value = miscAttributesJSON.getInt(keyMisc); // Here's your value
-                miscAttributes.put(keyMisc, value);
-            }
-
-            Map competences = new HashMap<String, Boolean>();
-
-            JSONObject competencesJSON = personajeJSON.getJSONObject("competences");
-            JSONArray keysComp = competencesJSON.names ();
-
-            for (int i = 0; i < keysComp.length (); i++) {
-                String keyComp = keysComp.getString (i); // Here's your key
-                Integer value = competencesJSON.getInt(keyComp); // Here's your value
-                competences.put(keyComp, value);
-            }
-
-            return new DnDCharacter(name, level, attributes, miscAttributes, competences);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        // Read attributes
+        Map attributes = new HashMap<String, Integer>();
+        JSONObject attributesJSON = personajeJSON.getJSONObject("attributes");
+        Iterator<String> keys = attributesJSON.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            attributes.put(key, attributesJSON.getInt(key));
         }
-        return null;
+
+        // Read miscAttributes
+        Map miscAttributes = new HashMap<String, String>();
+        JSONObject miscAttributesJSON = personajeJSON.getJSONObject("miscAttributes");
+        keys = miscAttributesJSON.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            miscAttributes.put(key, miscAttributesJSON.getString(key));
+        }
+
+        // Read competences
+        Map competences = new HashMap<String, Boolean>();
+        JSONObject competencesJSON = personajeJSON.getJSONObject("competences");
+        keys = competencesJSON.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            competences.put(key, competencesJSON.getBoolean(key));
+        }
+
+        return new DnDCharacter(name, level, attributes, miscAttributes, competences);
+    }
+
+    public boolean isComplete() {
+        return name != null && name != "" && level != null;
     }
 }

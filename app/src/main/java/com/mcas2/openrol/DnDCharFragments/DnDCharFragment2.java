@@ -107,6 +107,7 @@ public class DnDCharFragment2 extends Fragment {
 
         //Para guardar los cambios de las habilidades
         for (String key : abilities.keySet()) {
+            abilities.get(key).setText(character.getAttribute(key).toString());
             abilities.get(key).setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -126,7 +127,8 @@ public class DnDCharFragment2 extends Fragment {
         }
 
             for (String key : competences.keySet()) {
-            competences.get(key).setOnClickListener(new View.OnClickListener() {
+                competences.get(key).setChecked(character.getCompetences(key));
+                competences.get(key).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     character.setCompetences(key, competences.get(key).isChecked());

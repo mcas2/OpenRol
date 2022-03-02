@@ -37,6 +37,8 @@ public class SelectCharDnD extends AppCompatActivity{
         fabAddCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                OpenRolMain main = (OpenRolMain) getApplicationContext();
+                main.inConstruction = null;
                 Intent intent = new Intent(SelectCharDnD.this, DnDCharacterFactory.class);
                 startActivity(intent);
             }
