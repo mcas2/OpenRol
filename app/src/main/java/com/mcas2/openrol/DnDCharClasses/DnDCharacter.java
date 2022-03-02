@@ -72,7 +72,7 @@ public class DnDCharacter implements Serializable {
         this.name = name;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 

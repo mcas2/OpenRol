@@ -9,11 +9,11 @@ import java.io.Serializable;
 public class DnDWeapon implements Serializable {
     private Drawable icon;
     private String weaponName;
-    private int dices;
-    private int diceFaces;
+    private Integer dices;
+    private Integer diceFaces;
     private String properties;
 
-    public DnDWeapon(String weaponName, int dices, int diceFaces, String properties, Drawable icon) {
+    public DnDWeapon(String weaponName, Integer dices, Integer diceFaces, String properties, Drawable icon) {
         this.icon = icon;
         this.weaponName = weaponName;
         this.dices = dices;

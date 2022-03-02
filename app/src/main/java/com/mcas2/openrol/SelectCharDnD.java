@@ -13,13 +13,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mcas2.openrol.DnDCharClasses.CardViewAdapter;
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class SelectCharDnD extends AppCompatActivity{
@@ -29,7 +25,7 @@ public class SelectCharDnD extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        OpenRol context = (OpenRol) getApplicationContext();
+        OpenRolMain context = (OpenRolMain) getApplicationContext();
         context.setSelector(this);
         List<DnDCharacter> characters = context.getCharacters();
 

@@ -147,7 +147,12 @@ public class DnDCharFragment1 extends Fragment {
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
                     if (event.getAction() == event.ACTION_UP) {
                         String numAbilityText = String.valueOf(editTextsAtributos.get(key).getText());
-                        Integer numAbility = Integer.parseInt(numAbilityText);
+                        Integer numAbility;
+                        if (numAbilityText.equals("")){
+                            numAbility = 0;
+                        } else {
+                            numAbility = Integer.parseInt(numAbilityText);
+                        }
 
                         character.setAttribute(key, numAbility);
                     }

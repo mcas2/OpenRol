@@ -1,7 +1,6 @@
 package com.mcas2.openrol;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -26,34 +25,21 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
-import androidx.appcompat.widget.Toolbar;
 
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.DnDCharClasses.DnDWeapon;
-import com.mcas2.openrol.DnDCharFragments.DnDCharFragment1;
-import com.mcas2.openrol.DnDCharFragments.DnDCharFragment2;
-import com.mcas2.openrol.DnDCharFragments.DnDCharFragment3;
-import com.mcas2.openrol.DnDCharFragments.DnDCharFragment4;
-import com.mcas2.openrol.DnDCharFragments.DnDCharFragment5;
 import com.mcas2.openrol.ui.main.SectionsPagerAdapter;
 import com.mcas2.openrol.databinding.ActivityDndCharactersBinding;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-
-import io.grpc.internal.JsonParser;
 
 public class DnDCharacterFactory extends AppCompatActivity {
 
@@ -95,7 +81,7 @@ public class DnDCharacterFactory extends AppCompatActivity {
         fabSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OpenRol context = (OpenRol) getApplicationContext();
+                OpenRolMain context = (OpenRolMain) getApplicationContext();
                 context.addCharacter(newCharacter);
                 Toast toast = Toast.makeText(getApplicationContext(), newCharacter.getName() + " entró en los archivos.", Toast.LENGTH_SHORT);
                 toast.show();
@@ -152,7 +138,7 @@ public class DnDCharacterFactory extends AppCompatActivity {
 
 
     public void onPause () {
-        OpenRol context = (OpenRol) getApplicationContext();
+        OpenRolMain context = (OpenRolMain) getApplicationContext();
 
         try {
             File file = new File(Environment.getExternalStorageDirectory(), "dnd_characters.json");
@@ -170,28 +156,5 @@ public class DnDCharacterFactory extends AppCompatActivity {
             e.printStackTrace();
         }
         super.onPause();
-    }
-
-
-
-    public String getData(EditText et){
-        return et.getText().toString();
-    }
-
-
-
-
-    //Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
-    public void saveCharacter(ArrayList<DnDCharacter> characters){
-        try {
-            File filename = new File(getFilesDir(),"/"+ "dnd_characters.dat");
-            FileOutputStream file = new FileOutputStream(filename);
-            ObjectOutputStream os = new ObjectOutputStream(file);
-            os.writeObject(characters);
-            os.close();
-            file.close();
-        } catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }
