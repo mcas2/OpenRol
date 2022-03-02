@@ -27,10 +27,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{
             R.string.tab_text_1,
-            R.string.tab_text_2,
-            R.string.tab_text_3,
-            R.string.tab_text_4,
-            R.string.tab_text_5
+            R.string.tab_text_2
     };
 
     private final Context mContext;
@@ -51,15 +48,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 fragment = new DnDCharFragment2(character);
                 return fragment;
-            case 2:
-                fragment = new DnDCharFragment3(character);
-                return fragment;
-            case 3:
-                fragment = new DnDCharFragment4(character);
-                return fragment;
-            case 4:
-                fragment = new DnDCharFragment5(character);
-                return fragment;
         }
         return null;
     }
@@ -73,6 +61,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 2 total pages.
-        return 5;
+        return 2;
     }
 }

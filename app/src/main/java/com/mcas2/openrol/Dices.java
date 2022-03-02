@@ -53,6 +53,7 @@ public class Dices extends AppCompatActivity {
         adapter = new ArrayAdapter<Integer>(this, R.layout.support_simple_spinner_dropdown_item, diceFaces);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
+
         sp.setAdapter(adapter);
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -65,6 +66,10 @@ public class Dices extends AppCompatActivity {
 
             }
         });
+
+        int defaultDice = 5; // it correspondes to d20
+        sp.setSelection(defaultDice, true);
+
 
         //Tirada
         roll.setOnClickListener(new View.OnClickListener() {

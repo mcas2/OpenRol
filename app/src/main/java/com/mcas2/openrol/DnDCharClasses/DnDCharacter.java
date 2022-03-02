@@ -33,6 +33,8 @@ public class DnDCharacter implements Serializable {
         this.attributes = new HashMap<>();
         this.miscAttributes = new HashMap<>();
         this.competences = new HashMap<>();
+        this.attributes.put("race", 0);
+        this.attributes.put("class", 0);
     }
 
     public DnDCharacter(String name, Integer level, Map<String, Integer> attributes, Map<String, String> miscAttributes, Map<String, Boolean> competences) {

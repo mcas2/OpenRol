@@ -5,6 +5,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -41,42 +42,69 @@ public class DnDCharFragment1 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dnd_1, container, false);
 
-        Spinner classSpinner = (Spinner) view.findViewById(R.id.classSpinnerDnD);
         ArrayAdapter<CharSequence> classAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.dndClasses, R.layout.support_simple_spinner_dropdown_item);
         classAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
-        classSpinner.setAdapter(classAdapter);
-
-        Spinner raceSpinner = (Spinner) view.findViewById(R.id.raceSpinnerDnD);
         ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.dndRaces, R.layout.support_simple_spinner_dropdown_item);
         raceAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
         //Basicos
         name = view.findViewById(R.id.dndCHeditTextName);
-        name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        name.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    character.setName(name.getText().toString());
-                }
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                character.setName(name.getText().toString());
+                return false;
             }
         });
         name.setText(character.getName());
 
+
         level = view.findViewById(R.id.dndCHeditTextLevel);
-        level.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        level.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
-                    Integer numLevel = Integer.parseInt(level.getText().toString());
-                    character.setLevel(numLevel);
-                }
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                Integer numLevel = Integer.parseInt(level.getText().toString());
+                character.setLevel(numLevel);
+                return false;
             }
         });
         level.setText(character.getLevel().toString());
 
-        //Lo que ya estaba
+
+        Spinner raceSpinner = (Spinner) view.findViewById(R.id.raceSpinnerDnD);
         raceSpinner.setAdapter(raceAdapter);
+
+        raceSpinner.setSelection(character.getAttribute("race"), true);
+        raceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                character.setAttribute("race", position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        Spinner classSpinner = (Spinner) view.findViewById(R.id.classSpinnerDnD);
+        classSpinner.setAdapter(classAdapter);
+
+        classSpinner.setSelection(character.getAttribute("class"), true);
+        classSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                character.setAttribute("class", position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         editTextsCaracteristicas.put("strength", view.findViewById(R.id.dndCHeditTextStrength));
         editTextsCaracteristicas.put("dexterity", view.findViewById(R.id.dndCHeditTextDexterity));
