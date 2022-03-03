@@ -6,6 +6,8 @@ import android.widget.ImageView;
 
 import java.io.Serializable;
 
+//CLASE SIN IMPLEMENTAR
+
 public class DnDWeapon implements Serializable {
     private Drawable icon;
     private String weaponName;
