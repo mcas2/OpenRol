@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -45,6 +47,9 @@ public class Dices extends AppCompatActivity {
         resultHistory = (TextView) findViewById(R.id.resultHistory);
 
         roll = (ImageButton) findViewById(R.id.rollDicesButton);
+        Animation rollAnim = (Animation) AnimationUtils.loadAnimation(this, R.anim.rotate);
+        roll.setAnimation(rollAnim);
+
         erase = (Button) findViewById(R.id.eraseHistory);
         changeOp = (Button) findViewById(R.id.changeOperator);
         isNegative = false;
@@ -75,6 +80,9 @@ public class Dices extends AppCompatActivity {
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Animation rollDiceAnim = (Animation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate);
+                roll.setAnimation(rollDiceAnim);
+
                 int res = 0, diceRes, modifier;
                 int limit = numCaras+1;
                 modifier = Integer.parseInt(mod.getText().toString());

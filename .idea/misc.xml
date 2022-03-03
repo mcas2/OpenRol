@@ -4,20 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.209375" />
-        <entry key="app/src/main/res/drawable/ic_baseline_photo_camera.xml" value="0.275" />
-        <entry key="app/src/main/res/drawable/ic_book.xml" value="0.275" />
+        <entry key="app/src/main/res/drawable/ic_check_list.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/ic_dice10.xml" value="0.1935" />
         <entry key="app/src/main/res/drawable/ic_dice20.xml" value="0.1828125" />
         <entry key="app/src/main/res/drawable/ic_dice_small.xml" value="0.1935" />
+        <entry key="app/src/main/res/drawable/ic_foro.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/ic_knight.xml" value="0.6" />
-        <entry key="app/src/main/res/drawable/ic_knight_def.xml" value="0.275" />
-        <entry key="app/src/main/res/drawable/ic_role_playing.xml" value="0.275" />
+        <entry key="app/src/main/res/drawable/ic_video.xml" value="0.2005" />
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.1935" />
         <entry key="app/src/main/res/layout/activity_dices.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_dnd_characters.xml" value="0.45346869712351945" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_dnd_characters.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="app/src/main/res/layout/activity_resources.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_select_char_dnd.xml" value="0.2604166666666667" />
-        <entry key="app/src/main/res/layout/activity_select_char_system.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_select_char_system.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/activity_select_char_system2.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
         <entry key="app/src/main/res/layout/alert_dialog_dice.xml" value="0.25" />
