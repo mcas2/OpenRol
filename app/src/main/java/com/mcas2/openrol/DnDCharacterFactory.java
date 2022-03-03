@@ -50,11 +50,7 @@ public class DnDCharacterFactory extends AppCompatActivity {
     private ActivityResultLauncher<Intent> myARL;
 
     private ActivityDndCharactersBinding binding;
-    private ArrayList<DnDWeapon> weapons = new ArrayList<>();
-
-    private Spinner dndRace;
-    private Spinner dndClass;
-    private Switch inspiration;
+    private Bitmap image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +74,6 @@ public class DnDCharacterFactory extends AppCompatActivity {
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
 
-        //Básicos
-        //STRINGS
-        dndRace = findViewById(R.id.raceSpinnerDnD);
-        dndClass = (Spinner) findViewById(R.id.classSpinnerDnD);
-
-        //Otros
-        inspiration = findViewById(R.id.dndInspirationSwitch);
 
         FloatingActionButton fabSave = binding.fabSave;
 
@@ -127,7 +116,6 @@ public class DnDCharacterFactory extends AppCompatActivity {
                 });
     }
 
-    //Cámara
 
 
     @Override
@@ -144,6 +132,8 @@ public class DnDCharacterFactory extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //Camera methods
 
     private void takePhoto() {
         int checkPermissions = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);

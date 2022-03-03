@@ -21,9 +21,10 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvResources1"
+                android:layout_margin="15dp"
                 android:layout_width="170dp"
                 android:layout_height="200dp"
-                app:cardBackgroundColor="@color/estepa"
+                app:cardBackgroundColor="@color/naranja_dulce"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardMaxElevation="10dp"
@@ -61,9 +62,10 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvResources2"
+                android:layout_margin="15dp"
                 android:layout_width="170dp"
                 android:layout_height="200dp"
-                app:cardBackgroundColor="@color/estepa"
+                app:cardBackgroundColor="@color/naranja_dulce"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardMaxElevation="10dp"
@@ -109,7 +111,8 @@
                 android:id="@+id/cvResources3"
                 android:layout_width="170dp"
                 android:layout_height="200dp"
-                app:cardBackgroundColor="@color/estepa"
+                android:layout_margin="15dp"
+                app:cardBackgroundColor="@color/naranja_dulce"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardMaxElevation="10dp"
@@ -147,7 +150,8 @@
                 android:id="@+id/cvResources4"
                 android:layout_width="170dp"
                 android:layout_height="200dp"
-                app:cardBackgroundColor="@color/estepa"
+                android:layout_margin="15dp"
+                app:cardBackgroundColor="@color/naranja_dulce"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardMaxElevation="10dp"

@@ -71,7 +71,6 @@ public class DnDCharFragment1 extends Fragment {
 
         level.setText(character.getLevel().toString());
 
-
         Spinner raceSpinner = (Spinner) view.findViewById(R.id.raceSpinnerDnD);
         raceSpinner.setAdapter(raceAdapter);
 
