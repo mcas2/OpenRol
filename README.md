@@ -8,3 +8,5 @@ Las aportaciones para implementar otros sistemas de juego son bienvenidas, aunqu
 
 OpenRol cuenta con un apartado de dados para realizar tiradas varias, con modificadores y opciones, así como una pantalla de personaje desde la que se
 puede tirar en cada habilidad con sus respectivas modificaciones.
+
+![issue tab](images/knight.png)
