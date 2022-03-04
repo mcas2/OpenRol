@@ -56,13 +56,17 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
         holder.cardViewDnDCharName.setText(model.getName());
         holder.cardViewDnDCharLevel.setText(String.valueOf(model.getLevel()));
 
-        //Colocar imágenes en función de la clase
-        //SOLO COLOCA LOS DE POSICIÓN 0 debuguear
         Integer heroClass = model.getAttribute("class");
         Integer classId = getHeroClassId(heroClass);
-        model.setImage(BitmapFactory.decodeResource(context.getResources(), classId));
 
-        holder.cardViewDnDCharImage.setImageBitmap(model.getImage());
+        //Colocar imágenes en función de la clase
+        if (model.getImageDefault()==null){
+            model.setImage(BitmapFactory.decodeResource(context.getResources(), classId));
+            holder.cardViewDnDCharImage.setImageBitmap(model.getImage());
+        } else {
+            holder.cardViewDnDCharImage.setImageBitmap(model.getImageDefault());
+        }
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +79,6 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
             }
         });
     }
-
-
-
 
 
     private Integer getHeroClassId(Integer heroClass) {
@@ -103,11 +104,11 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.Viewho
             case (9):
                 return R.drawable.monk;
             case (10):
-                return R.drawable.ic_knight;
+                return R.drawable.knight_coloured;
             case (11):
                 return R.drawable.rogue;
             default:
-                return R.drawable.ic_knight;
+                return R.drawable.knight_coloured;
         }
     }
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Resources">
+    tools:context=".FutureDevelopment.Resources">
 
     <LinearLayout
         android:orientation="vertical"
@@ -24,7 +24,7 @@
                 android:layout_margin="15dp"
                 android:layout_width="170dp"
                 android:layout_height="200dp"
-                app:cardBackgroundColor="@color/naranja_dulce"
+                app:cardBackgroundColor="@color/gris_nube"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardMaxElevation="10dp"
@@ -65,7 +65,7 @@
                 android:layout_margin="15dp"
                 android:layout_width="170dp"
                 android:layout_height="200dp"
-                app:cardBackgroundColor="@color/naranja_dulce"
+                app:cardBackgroundColor="@color/gris_nube"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardMaxElevation="10dp"
@@ -112,7 +112,7 @@
                 android:layout_width="170dp"
                 android:layout_height="200dp"
                 android:layout_margin="15dp"
-                app:cardBackgroundColor="@color/naranja_dulce"
+                app:cardBackgroundColor="@color/gris_nube"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardMaxElevation="10dp"
@@ -151,7 +151,7 @@
                 android:layout_width="170dp"
                 android:layout_height="200dp"
                 android:layout_margin="15dp"
-                app:cardBackgroundColor="@color/naranja_dulce"
+                app:cardBackgroundColor="@color/gris_nube"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp"
                 app:cardMaxElevation="10dp"

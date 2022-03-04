@@ -1,11 +1,9 @@
 package com.mcas2.openrol.DnDCharClasses;
 
 import android.graphics.Bitmap;
-import android.os.Build;
 
-import androidx.annotation.RequiresApi;
+import com.mcas2.openrol.FutureDevelopment.DnDWeapon;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,6 +21,7 @@ public class DnDCharacter implements Serializable {
     private String name;
     private Integer level;
     private Bitmap image;
+    private Bitmap imageDefault;
 
 
     private List<DnDWeapon> dndWeapons = new ArrayList<>();
@@ -95,6 +94,15 @@ public class DnDCharacter implements Serializable {
     public void setImage(Bitmap image) {
         this.image = image;
     }
+
+    public Bitmap getImageDefault() {
+        return imageDefault;
+    }
+
+    public void setImageDefault(Bitmap image) {
+        this.imageDefault = image;
+    }
+
 
     public JSONObject serialize (){
         //En el primero se guardan los otros

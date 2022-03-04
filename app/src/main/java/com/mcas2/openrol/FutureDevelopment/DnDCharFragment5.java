@@ -1,4 +1,4 @@
-package com.mcas2.openrol.DnDCharFragments;
+package com.mcas2.openrol.FutureDevelopment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.R;
-
+//CLASE SIN FUNCIONAMIENTO, POTENCIAL AMPLIACIÓN
 public class DnDCharFragment5 extends Fragment {
 
     private DnDCharacter character;

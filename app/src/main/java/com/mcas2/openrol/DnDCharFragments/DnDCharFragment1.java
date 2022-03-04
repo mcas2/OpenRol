@@ -1,5 +1,6 @@
 package com.mcas2.openrol.DnDCharFragments;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
@@ -22,6 +24,7 @@ import com.mcas2.openrol.R;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 
 public class DnDCharFragment1 extends Fragment {
     public EditText name;
@@ -30,6 +33,10 @@ public class DnDCharFragment1 extends Fragment {
     private Map<String, EditText> editTextsAtributos = new HashMap<>();
     //private Map<String, EditText> editText = new HashMap<>();
     private Map<String, TextView> textViewsCaracteristicas = new HashMap<>();
+    private Map<String, CardView> cardViewHashMap = new HashMap<>();
+
+    Random r = new Random();
+    AlertDialog.Builder builder;
 
     private DnDCharacter character;
 
@@ -61,6 +68,8 @@ public class DnDCharFragment1 extends Fragment {
 
 
         level = view.findViewById(R.id.dndCHeditTextLevel);
+        character.setLevel(Integer.parseInt(level.getText().toString()));
+
         level.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -112,6 +121,14 @@ public class DnDCharFragment1 extends Fragment {
         editTextsCaracteristicas.put("wisdom", view.findViewById(R.id.dndCHeditTextWisdom));
         editTextsCaracteristicas.put("charisma", view.findViewById(R.id.dndCHeditTextCharisma));
 
+        builder = new AlertDialog.Builder(getContext());
+        cardViewHashMap.put("strength",view.findViewById(R.id.cardViewStregth));
+        cardViewHashMap.put("dexterity",view.findViewById(R.id.cardViewDexterity));
+        cardViewHashMap.put("constitution",view.findViewById(R.id.cardViewConstitution));
+        cardViewHashMap.put("intelligence",view.findViewById(R.id.cardViewIntelligence));
+        cardViewHashMap.put("wisdom",view.findViewById(R.id.cardViewWisdom));
+        cardViewHashMap.put("charisma",view.findViewById(R.id.cardViewCharisma));
+
         editTextsAtributos.put("armorClass", view.findViewById(R.id.dndCHeditTextArmorClass));
         editTextsAtributos.put("competencia", view.findViewById(R.id.dndCHeditTextCompetencia));
         editTextsAtributos.put("speed", view.findViewById(R.id.dndCHeditTextSpeed));
@@ -157,10 +174,12 @@ public class DnDCharFragment1 extends Fragment {
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
                     if (event.getAction() == event.ACTION_UP) {
                         String numAbilityText = String.valueOf(Objects.requireNonNull(editTextsCaracteristicas.get(key)).getText());
+                        Integer numAbility = null;
                         if (numAbilityText.equals("")) {
                             numAbilityText = "0";
                         }
-                        Integer numAbility = Integer.parseInt(numAbilityText);
+
+                        numAbility = Integer.parseInt(numAbilityText);
                         Integer modificador = assignAbilityScore(numAbility);
                         textViewsCaracteristicas.get(key).setText(String.valueOf(modificador));
                         character.setAttribute(key, numAbility);
@@ -182,7 +201,7 @@ public class DnDCharFragment1 extends Fragment {
                         if (numAbilityText.equals("")){
                             numAbility = 0;
                         } else {
-                            numAbility = Integer.parseInt(numAbilityText);
+                            numAbility = Integer.valueOf(numAbilityText);
                         }
 
                         character.setAttribute(key, numAbility);
@@ -193,11 +212,39 @@ public class DnDCharFragment1 extends Fragment {
 
         }
 
+        //Para tirar
+        for (String key : cardViewHashMap.keySet()) {
+            cardViewHashMap.get(key).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer habilidad;
+                    if (character.getAttribute(key) == null) {
+                        habilidad = 0;
+                    } else{
+                        habilidad = assignAbilityScore(character.getAttribute(key));
+                    }
+                    rollDice(habilidad);
+                }
+            });
+        }
+
         return view;
     }
 
 
-
+    public void rollDice (Integer habilidad){
+        Integer diceResult = r.nextInt(20)+1;
+        String resultado;
+        if (habilidad!=0) {
+            resultado = diceResult + "+" + habilidad + " = " + (diceResult + habilidad);
+        } else {
+            resultado = diceResult.toString();
+        }
+        View view = getLayoutInflater().inflate(R.layout.alert_dialog_dice, null);
+        TextView tv = view.findViewById(R.id.resultAlertDialog);
+        tv.setText(resultado);
+        builder.setView(view).show();
+    }
 
         public Integer assignAbilityScore (Integer numAbility){
             switch (numAbility) {

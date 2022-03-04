@@ -1,4 +1,4 @@
-package com.mcas2.openrol.DnDCharClasses;
+package com.mcas2.openrol.FutureDevelopment;
 
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -6,8 +6,7 @@ import android.widget.ImageView;
 
 import java.io.Serializable;
 
-//CLASE SIN IMPLEMENTAR
-
+//CLASE SIN FUNCIONAMIENTO, POTENCIAL AMPLIACIÓN
 public class DnDWeapon implements Serializable {
     private Drawable icon;
     private String weaponName;

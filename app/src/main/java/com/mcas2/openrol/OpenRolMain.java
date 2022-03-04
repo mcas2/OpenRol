@@ -1,15 +1,9 @@
 package com.mcas2.openrol;
 
 import android.app.Application;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Environment;
-import android.util.JsonReader;
 import android.util.Log;
 
-import com.google.android.gms.common.util.IOUtils;
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
-import com.mcas2.openrol.DnDCharClasses.DnDWeapon;
 import com.mcas2.openrol.DnDCharClasses.MissingFields;
 
 import org.json.JSONArray;
@@ -17,23 +11,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-
-import io.grpc.internal.JsonParser;
 
 public class OpenRolMain extends Application {
 

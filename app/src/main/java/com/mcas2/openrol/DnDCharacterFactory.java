@@ -19,18 +19,14 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
-import com.mcas2.openrol.DnDCharClasses.DnDWeapon;
 import com.mcas2.openrol.ui.main.SectionsPagerAdapter;
 import com.mcas2.openrol.databinding.ActivityDndCharactersBinding;
 
@@ -39,7 +35,6 @@ import org.json.JSONArray;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class DnDCharacterFactory extends AppCompatActivity {
 
@@ -110,7 +105,7 @@ public class DnDCharacterFactory extends AppCompatActivity {
                         if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                             Bundle bundle = result.getData().getExtras();
                             Bitmap imagen = (Bitmap) bundle.get("data");
-                            newCharacter.setImage(imagen);
+                            newCharacter.setImageDefault(imagen);
                         }
                     }
                 });

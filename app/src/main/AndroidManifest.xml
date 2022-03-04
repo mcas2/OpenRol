@@ -21,14 +21,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenRol">
         <activity
-            android:name=".Resources"
+            android:name=".FutureDevelopment.ResourcesWebView"
+            android:exported="false" />
+        <activity
+            android:name=".FutureDevelopment.Resources"
             android:exported="false" />
         <activity
             android:name=".SelectCharSystem"
             android:exported="false" />
         <activity
             android:name=".SelectCharDnD"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".DnDCharacterFactory"
             android:exported="false"
@@ -50,7 +53,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

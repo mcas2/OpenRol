@@ -11,6 +11,7 @@ import android.widget.Checkable;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -113,11 +114,16 @@ public class DnDCharFragment2 extends Fragment {
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
                     if (event.getAction() == event.ACTION_UP) {
                         String numAbilityText = String.valueOf(abilities.get(key).getText());
-                        Integer numAbility;
+                        Integer numAbility = null;
                         if (numAbilityText.equals("")) {
                             numAbility = 0;
                         } else {
-                            numAbility = Integer.valueOf(numAbilityText);
+                            try {
+                                numAbility = Integer.valueOf(numAbilityText);
+                            } catch (NumberFormatException e){
+                                Toast toast = Toast.makeText(getActivity().getApplicationContext(), "¿Has introducido un número entero?", Toast.LENGTH_SHORT);
+                                numAbility = 0;
+                            }
                         }
                         character.setAttribute(key, numAbility);
                     }
@@ -126,6 +132,7 @@ public class DnDCharFragment2 extends Fragment {
             });
         }
 
+        //Para guardar las competencias (Checkboxes)
             for (String key : competences.keySet()) {
                 competences.get(key).setChecked(character.getCompetences(key));
                 competences.get(key).setOnClickListener(new View.OnClickListener() {

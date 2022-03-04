@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.mcas2.openrol.FutureDevelopment.Resources;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

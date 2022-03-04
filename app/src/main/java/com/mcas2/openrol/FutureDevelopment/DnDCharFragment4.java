@@ -1,41 +1,34 @@
-package com.mcas2.openrol.DnDCharFragments;
+package com.mcas2.openrol.FutureDevelopment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mcas2.openrol.DnDCharClasses.DnDCharacter;
 import com.mcas2.openrol.R;
-
-public class DnDCharFragment3 extends Fragment {
-
+//CLASE SIN FUNCIONAMIENTO, POTENCIAL AMPLIACIÓN
+public class DnDCharFragment4 extends Fragment {
     private DnDCharacter character;
+    private EditText magic;
 
-    public DnDCharFragment3(DnDCharacter character) {
+    public DnDCharFragment4(DnDCharacter character) {
         this.character = character;
     }
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_dnd_3, container, false);
+        View view = inflater.inflate(R.layout.fragment_dnd_4, container, false);
 
-
-
-        FloatingActionButton fabCC = view.findViewById(R.id.createCCWeapon);
-        fabCC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        magic = (EditText) view.findViewById(R.id.editTextMagic);
 
         return view;
     }
